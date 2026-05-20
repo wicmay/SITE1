@@ -1,0 +1,212 @@
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  padding: 30px;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  color: #2b4661;
+  overflow-x: hidden;
+  background: #d4dde6; /* Cor de segurança */
+}
+
+/* --- ESTILOS DE FONTE ESPECÍFICOS (MANTIDOS E REFORÇADOS) --- */
+.font-playfair { font-family: 'Playfair Display', serif; }
+.font-georgia { font-family: 'Georgia', serif; font-style: italic; } /* Pra coreano e escrita manual */
+.font-stamp { font-family: 'Playfair Display', serif; text-transform: uppercase; letter-spacing: 3px; }
+
+/* Manuscritos coreanos escuros e visíveis */
+.handwriting-coreano { font-family: 'Noto Sans KR', sans-serif; font-size: 11px; color: #2c4a6f; text-align: center; margin-top: 10px;}
+.visible-text { color: #2c4a6f !important; }
+
+/* FUNDO GLOBAL DO CÉU NUBLADO - EXATAMENTE COMO NA REFERÊNCIA */
+.background-ceu-global {
+  background: 
+    linear-gradient(to bottom, rgba(220, 235, 245, 0.4), rgba(220, 235, 245, 0.1)),
+    url("hyyh-bg.jpg") no-repeat center center; /* Mesma imagem do hero, mas aplicada globalmente */
+  background-size: cover;
+  background-attachment: fixed; /* O céu fica parado ao rolar */
+}
+
+.site { max-width: 1440px; margin: auto; border-radius: 24px; overflow: hidden; box-shadow: 0 20px 60px rgba(0, 0, 0, 0.12); }
+
+/* HERO (PÁGINA INICIAL) */
+.hero { height: 640px; position: relative; /* Fundo fica transparente pra mostrar o céu global */ background: transparent; z-index: 1; }
+
+.menu { position: absolute; top: 35px; left: 60px; right: 60px; z-index: 30; display: flex; justify-content: space-between; align-items: center; }
+.logo { font-size: 20px; font-weight: 700; letter-spacing: -0.5px; color: #3b5c7d; }
+.menu nav { display: flex; gap: 35px; }
+.menu a { color: #69839c; text-decoration: none; font-size: 15px; font-weight: 500; transition: color 0.3s; }
+.menu a.active, .menu a:hover { color: #2b4661; border-bottom: 1px solid #2b4661; }
+.icons { font-size: 16px; color: #69839c; display: flex; gap: 15px; }
+
+.borboletas-grupo { position: absolute; top: 90px; left: 80px; z-index: 25; }
+.borboleta { font-size: 24px; opacity: 0.7; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1)); }
+.borboleta.b2 { transform: translate(30px, -10px) scale(0.8) rotate(15deg); opacity: 0.5; }
+.borboleta.b3 { transform: translate(15px, 15px) scale(0.6) rotate(-20deg); opacity: 0.4; }
+
+.texto-coreano { position: absolute; top: 210px; left: 80px; z-index: 25; color: #2c4a6f; font-size: 14px; line-height: 1.8; text-shadow: 1px 1px 2px rgba(255,255,255,0.7); }
+
+.selo-hyyh { z-index: 25; border: 1px solid #3b5c7d; color: #3b5c7d; text-align: center; padding: 12px 10px; font-family: 'Playfair Display', serif; }
+.selo-hyyh.rect { position: absolute; top: 130px; right: 80px; width: 90px; }
+.selo-hyyh strong { font-size: 20px; font-weight: 400; line-height: 1.1; letter-spacing: 2px; display: block; }
+.selo-linha { border: 0; border-top: 1px solid #3b5c7d; margin: 8px 0; }
+.selo-hyyh span { font-size: 10px; letter-spacing: 4px; font-weight: 600; display: block; }
+.badge-num { position: absolute; top: -12px; right: -8px; font-size: 14px; font-weight: bold; }
+
+.hero-centro { position: absolute; top: 140px; left: 50%; transform: translateX(-50%); z-index: 26; width: 100%; max-width: 700px; text-align: center; }
+.hero-centro h1 { font-family: 'Playfair Display', serif; font-size: 76px; font-weight: 400; line-height: 1.05; color: #274463; letter-spacing: -1px; }
+.hero-centro p { margin-top: 15px; color: #2c4a6f; font-size: 15px; letter-spacing: 0.5px; }
+
+.botao-login { margin-top: 30px; padding: 10px 32px; border-radius: 50px; border: 1px solid #274463; background: transparent; color: #274463; font-size: 14px; font-weight: 500; cursor: pointer; transition: all 0.3s; }
+.botao-login:hover { background: #274463; color: #fff; }
+
+.papel-rasgado-transicao { position: absolute; bottom: -1px; left: 0; width: 100%; height: 50px; background: #f1ede4; z-index: 35; clip-path: polygon(0 65%, 4% 45%, 9% 60%, 15% 40%, 23% 55%, 32% 38%, 41% 58%, 52% 43%, 63% 55%, 72% 38%, 81% 58%, 90% 45%, 95% 55%, 100% 40%, 100% 100%, 0% 100%); }
+
+/* SOBRE NÓS / PILARES (ESTILO SCRAPBOOK CLÁSSICO) */
+.papel-secao { background: #f1ede4; padding: 40px 60px 80px 60px; display: grid; grid-template-columns: 260px 1fr 260px; gap: 30px; align-items: flex-start; position: relative; margin-top: -160px; z-index: 5; }
+
+.conteudo-baixo { display: flex; gap: 50px; align-items: flex-start; padding-top: 40px; }
+
+.sobre { flex: 1.2; }
+.sobre small, .pilares small { display: block; color: #4a6f91; font-size: 12px; text-transform: lowercase; margin-bottom: 12px; letter-spacing: 1px; }
+.sobre h2 { font-family: 'Playfair Display', serif; font-size: 34px; font-weight: 400; line-height: 1.1; color: #274463; }
+.sobre h2 span { color: #43698f; }
+.sobre p { margin-top: 15px; color: #444; font-size: 13.5px; line-height: 1.6; }
+.saiba-mais { display: inline-block; margin-top: 15px; color: #2c4a6f; font-size: 13px; font-weight: 600; text-decoration: none; }
+
+.pilares { flex: 1.8; }
+.cards-pilares { display: flex; margin-top: 15px; }
+.pilar { flex: 1; padding: 0 20px; border-left: 1px dashed #c4bdb2; text-align: center; }
+.pilar.sem-borda { border-left: none; padding-left: 0; }
+.pilar-icone { font-size: 22px; margin-bottom: 10px; opacity: 0.8; }
+.pilar h3 { font-family: 'Playfair Display', serif; font-size: 18px; font-weight: 400; color: #2b2b2b; margin-bottom: 6px; }
+.pilar p { color: #444; font-size: 12px; line-height: 1.5; }
+
+/* POLAROIDS GERAIS */
+.polaroid-wrapper { position: relative; }
+.polaroid { background: #ffffff; padding: 12px 12px 28px 12px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06); border-radius: 1px; width: 100%; }
+.polaroid img { width: 100%; height: 160px; object-fit: cover; display: block; filter: sepia(8%) contrast(96%); }
+.fita-adesiva { position: absolute; z-index: 5; width: 75px; height: 24px; background: rgba(215, 210, 195, 0.7); border: 1px solid rgba(255,255,255,0.2); box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
+
+.polaroid-wrapper.esquerda { transform: rotate(-4deg) translateY(-20px); z-index: 12; }
+.polaroid-wrapper.direita { transform: rotate(3deg) translateY(0px); z-index: 12; }
+.esquerda .fita-adesiva { top: 5px; left: 35%; transform: rotate(-12deg); }
+.young { text-align: center; margin-top: 45px; color: #2c4a6f; font-size: 10px; }
+
+/* --- PROJETOS (SCRAPBOOK RAIZ FUTEBOL CLUBE) --- */
+.projetos-final-scrapbook { display: none; position: relative; min-height: 100vh; padding: 60px 8%; background: transparent; z-index: 1; }
+
+.scrapbook-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 60px; }
+.header-escola-container { color: #2c4a6f; position: relative; }
+.sair-scrapbook { background: transparent; border: none; color: #2c4a6f; font-weight: bold; cursor: pointer; font-size: 14px; margin-bottom: 20px; }
+.butterfly-badge { font-size: 24px; color: #3b5c7d; margin-bottom: 8px; }
+.header-escola-container strong { font-size: 15px; letter-spacing: 0.5px; }
+.header-escola-container p { font-size: 12px; opacity: 0.8; }
+
+.titulo-central-container { text-align: center; max-width: 600px; }
+.titulo-central-container h2 { font-family: 'Playfair Display', serif; font-size: 46px; font-weight: 400; color: #274463; letter-spacing: -0.5px; line-height: 1.1; }
+.titulo-central-container p { margin-top: 15px; color: #2c4a6f; font-size: 15px; }
+
+.hyyh-badge-scrapbook .selo-hyyh { border-color: rgba(59, 92, 125, 0.4); color: rgba(59, 92, 125, 0.6); }
+
+/* GRID E CARDS DE PAPEL */
+.grid-projetos-scrap { display: grid; grid-template-columns: repeat(3, 1fr); gap: 25px; position: relative; z-index: 10; margin-top: 40px; }
+
+.card-projeto-wrapper {
+  background: #fdfaf4; /* Cor de papel bege suave */
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+  padding: 35px 25px;
+  position: relative;
+  transition: transform 0.3s;
+}
+
+.card-projeto-wrapper:hover { transform: translateY(-5px); }
+
+/* FITAS ADESIVAS NOS CARDS (Simulação de textura/tipo) */
+.tape-top-left { top: -10px; left: 15%; transform: rotate(-5deg); width: 80px; background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mP8z8BQDwAEhQGAhKmMIQAAAABJRU5ErkJggg==') repeat; background-color: rgba(225, 218, 200, 0.8); } /* Textura leve */
+.tape-top-center { top: -12px; left: 40%; transform: rotate(3deg); width: 90px; background: repeating-linear-gradient(45deg, transparent, transparent 5px, rgba(0,0,0,0.03) 5px, rgba(0,0,0,0.03) 10px), rgba(215, 220, 230, 0.8); } /* Xadrez azulzinho */
+.tape-bottom-right { bottom: -10px; right: 10%; transform: rotate(-10deg); width: 70px; background-color: rgba(225, 218, 200, 0.8); }
+.tape-top-right { top: -10px; right: 20%; transform: rotate(8deg); width: 80px; background-color: rgba(230, 225, 215, 0.8); }
+
+.card-pilar-conteudo { text-align: left; color: #274463; position: relative; z-index: 2; }
+.icone-card { font-size: 26px; color: #d6988c; margin-bottom: 12px; }
+.card-pilar-conteudo h3 { font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 700; margin-bottom: 10px; color: #274463; }
+.categoria-tag { display: inline-block; padding: 2px 0; color: #69839c; font-size: 11px; font-weight: bold; margin-bottom: 15px; letter-spacing: 1px; }
+.card-pilar-conteudo p { color: #555; font-size: 13px; line-height: 1.6; margin-bottom: 25px; }
+.acessar-link { color: #43698f; text-decoration: none; font-size: 12px; font-weight: bold; }
+
+/* DECORAÇÕES DE FLORES (Opcional, simulado) */
+.flor-decor { position: absolute; opacity: 0.4; pointer-events: none; }
+.decor-right { right: 10px; bottom: 20px; width: 40px; height: 100px; background: url('flower1.png') no-repeat center/contain; }
+.decor-bottom { right: 20px; bottom: 20px; width: 40px; height: 80px; background: url('flower2.png') no-repeat center/contain; }
+
+/* RODAPÉ SCRAPBOOK (DE VOLTA ÀS FITAS E POLAROIDS) */
+.scrapbook-footer-decor { position: relative; margin-top: 60px; width: calc(100% + 16%); margin-left: -8%; }
+
+/* --- AJUSTE: FUNDO BRANCO NA PARTE DEBAIXO --- */
+.white-background-bottom {
+  background: #ffffff !important; /* Força o fundo branco */
+}
+
+/* O efeito do papel rasgado também deve acompanhar o fundo branco */
+.scrapbook-transicao {
+    background: #ffffff; /* Era azul, agora é BRANCO */
+    position: static;
+    clip-path: polygon(0 40%, 4% 55%, 9% 40%, 15% 60%, 23% 45%, 32% 62%, 41% 42%, 52% 57%, 63% 45%, 72% 62%, 81% 42%, 90% 55%, 95% 45%, 100% 60%, 100% 100%, 0% 100%);
+}
+
+/* CONTAINER GERAL DO RODAPÉ (AGORA BRANCO) */
+.scrapbook-footer-conteudo {
+    padding: 40px 8% 60px 8%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    z-index: 10;
+}
+
+/* POLAROIDS NO RODAPÉ */
+.decorative-polaroid .polaroid { width: 220px; padding: 12px 12px 35px 12px; }
+.decorative-polaroid .polaroid img { height: 160px; }
+
+.left-polaroid { transform: rotate(-6deg) translateY(-40px); }
+.left-polaroid .polaroid-tape { top: -10px; left: 35%; width: 80px; transform: rotate(-5deg); background-color: rgba(225, 218, 200, 0.9); }
+
+/* --- AJUSTE: MENSAGEM NO MEIOOO PERFEITAMENTE CENTRALIZADA --- */
+.perfectly-centered {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex-grow: 1; /* Faz esse bloco ocupar todo o espaço central disponível */
+  text-align: center;
+}
+
+.scrapbook-butterflies { text-align: center; color: #3b5c7d; opacity: 0.6; }
+.scrapbook-butterflies .b2 { transform: translate(25px, -15px) scale(0.7) rotate(20deg); }
+
+/* O TEXTO MANUSCRITO NO MEIOOO */
+.centralized-middle-phrase {
+    color: #2c4a6f;
+    font-size: 15px;
+    line-height: 1.8;
+    margin: 20px 0; /* Espaçamento vertical */
+    width: 100%;
+}
+
+.carimbo-round { border: 1px solid rgba(74, 103, 133, 0.4); color: rgba(74, 103, 133, 0.5); width: 90px; height: 90px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 11px; line-height: 1.2; transform: rotate(15deg) translate(80px, -40px); }
+
+.right-polaroid { transform: rotate(5deg) translateY(-20px); }
+
+/* TELAS INTERNAS (MANTIDO SEU PADRÃO COM EFEITO PREMIUM TRANSLÚCIDO) */
+.verificacao, .projetos, .negado { display: none; padding: 50px; border-radius: 0 0 24px 24px; background: rgba(255, 255, 255, 0.65); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.8); border-radius: 24px; box-shadow: 0 10px 40px rgba(43, 70, 97, 0.08); }
+.voltar, .sair { background: none; border: none; color: #2f6c9e; font-weight: bold; cursor: pointer; margin-bottom: 25px; }
+.topo-verificacao { text-align: center; }
+.icone { font-size: 38px; }
+.topo-verificacao h2, .projetos h2, .negado h2 { font-family: 'Playfair Display', serif; font-size: 42px; color: #2f6c9e; font-weight: 400; text-align: center; }
+#statusVerificacao, .descricao, .restrito, .negado p { text-align: center; color: #25597f; margin-top: 12px; }
+.timer { width: 105px; height: 105px; margin: 28px auto; border-radius: 50%; border: 3px solid #2f6c9e; display: flex; align-items: center; justify-content: center; flex-direction: column; }
+.grid-perguntas, .cards-projetos { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; margin-top: 35px; }
+.pergunta-card, .card-projeto { background: #fffaf3; padding: 28px; border-radius: 24px; }
+.opcao { display: block; padding: 13px; margin-top: 10px; border-radius: 14px; background: #e1f0fb; color: #25597f; }
+.confirmar, .negado button { display: block; margin: 35px auto 15px; padding: 15px 45px; border: none; border-radius: 999px; background: #2f6c9e; color: white; font-weight: bold; }
