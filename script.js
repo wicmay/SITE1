@@ -18,6 +18,13 @@ const firebaseConfig = {
 };
 
 const app = initializeApp(firebaseConfig);
+import {
+  getFirestore,
+  collection,
+  addDoc
+} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+const db = getFirestore(app);
 const auth = getAuth(app);
 const provider = new GoogleAuthProvider();
 
@@ -196,3 +203,58 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 });
+
+window.enviarProjeto = async function(){
+
+try{
+
+await addDoc(
+collection(db,"projetos"),
+{
+
+nome:
+document.getElementById("nomeProjeto").value,
+
+responsavel:
+document.getElementById("responsavelProjeto").value,
+
+email:
+document.getElementById("emailProjeto").value,
+
+objetivo:
+document.getElementById("objetivoProjeto").value,
+
+explicacao:
+document.getElementById("explicacaoProjeto").value,
+
+funcionamento:
+document.getElementById("funcionamentoProjeto").value,
+
+recursos:
+document.getElementById("recursosProjeto").value,
+
+publico:
+document.getElementById("publicoProjeto").value,
+
+impacto:
+document.getElementById("impactoProjeto").value,
+
+documento:
+document.getElementById("documentoProjeto").value,
+
+data:new Date()
+
+});
+
+alert("Projeto enviado para análise 💜");
+
+}
+catch(erro){
+
+console.log(erro);
+
+alert("Erro ao enviar projeto");
+
+}
+
+}

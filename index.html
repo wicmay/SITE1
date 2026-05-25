@@ -267,66 +267,106 @@
       <form class="formulario-projeto">
 
         <label>
-          Nome do projeto
-          <input type="text" placeholder="ex.: Entrevistas para o BTS no Brasil">
-        </label>
+Nome do projeto
+
+<input
+id="nomeProjeto"
+type="text"
+placeholder="ex.: Entrevistas para o BTS no Brasil">
+
+</label>
 
         <div class="duas-colunas">
           <label>
-            Fanbase ou perfil responsável
-            <input type="text" placeholder="ex.: @armybrasil / BARMY FORCE">
-          </label>
+Fanbase ou perfil responsável
+
+<input
+id="responsavelProjeto"
+type="text">
+
+</label>
 
           <label>
             E-mail para contato
-            <input type="email" placeholder="seuemail@exemplo.com">
+            <input
+id="emailProjeto"
+type="email"
+placeholder="seuemail@exemplo.com">
           </label>
         </div>
 
         <label>
-          Objetivo do projeto
-          <textarea placeholder="Qual o principal objetivo da sua proposta?"></textarea>
-        </label>
+  Objetivo do projeto
+  <textarea id="objetivoProjeto" placeholder="Qual o principal objetivo da sua proposta?"></textarea>
+</label>
 
         <label>
-          Explicação completa
-          <textarea placeholder="Descreva sua ideia com o máximo de detalhes possível."></textarea>
-        </label>
+  Explicação completa
+  <textarea id="explicacaoProjeto" placeholder="Descreva sua ideia com o máximo de detalhes possível."></textarea>
+</label>
 
-        <label>
-          Como funcionaria
-          <textarea placeholder="Explique o passo a passo e a execução do projeto."></textarea>
-        </label>
+<label>
+  Como funcionaria
+  <textarea id="funcionamentoProjeto" placeholder="Explique o passo a passo e a execução do projeto."></textarea>
+</label>
 
         <div class="duas-colunas">
           <label>
             Recursos necessários
-            <input type="text" placeholder="Quais recursos serão precisos?">
+            <input
+id="recursosProjeto"
+type="text">
           </label>
 
           <label>
             Público-alvo
-            <input type="text" placeholder="Quem será o público do projeto?">
+            <input
+id="publicoProjeto"
+type="text"
+placeholder="Quem será o público do projeto?">
           </label>
         </div>
 
         <label>
           Impacto esperado
           <textarea placeholder="Qual o impacto que seu projeto pode gerar para o fandom e para o BTS no Brasil?"></textarea>
+          <textarea
+id="impactoProjeto"
+placeholder="Descreva o impacto esperado do projeto."></textarea>
         </label>
 
         <label>
-          Documento opcional
-          <div class="upload-projeto">
-            <div>☁</div>
-            <strong>Clique para anexar ou arraste seu arquivo aqui</strong>
-            <small>PDF, DOC, DOCX ou PPT — Máx. 10MB</small>
-          </div>
-        </label>
 
-        <button type="button" class="btn-enviar-projeto">
-          ✈ enviar projeto para análise
-        </button>
+Documento opcional
+
+<div class="upload-projeto link-box">
+
+<div class="icone-upload">☁</div>
+
+<strong>
+Cole o link do documento
+</strong>
+
+<input
+id="documentoProjeto"
+type="url"
+placeholder="Cole aqui o link do Google Docs, Drive ou Canva">
+
+<small>
+Google Docs • Drive • Canva • PDF online
+</small>
+
+</div>
+
+</label>
+<button
+type="button"
+class="btn-enviar-projeto"
+onclick="enviarProjeto()">
+
+✈ enviar projeto para análise
+
+</button>
 
       </form>
     </section>
