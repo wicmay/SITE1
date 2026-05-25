@@ -1988,3 +1988,102 @@ a {
     height: 58px;
   }
 }
+
+/* ===== MOBILE HERO ===== */
+@media (max-width: 768px){
+
+.hero-section{
+    min-height:100vh;
+    padding:25px 18px 90px;
+    overflow:hidden;
+}
+
+/* menu */
+.menu{
+    flex-direction:column;
+    gap:14px;
+    align-items:flex-start;
+}
+
+.menu nav{
+    display:flex;
+    gap:22px;
+    font-size:15px;
+}
+
+/* texto principal */
+.hero-centro{
+    width:100%;
+    margin-top:120px;
+    text-align:center;
+    z-index:10;
+}
+
+.hero-centro h1{
+    font-size:56px;
+    line-height:.95;
+}
+
+.hero-centro p{
+    font-size:15px;
+    max-width:280px;
+    margin:auto;
+}
+
+.btn-dark{
+    margin-top:18px;
+}
+
+/* manuscrito */
+.texto-coreano{
+   left:18px;
+   top:280px;
+   font-size:10px;
+   opacity:.45;
+}
+
+.assinatura{
+   right:25px;
+   top:380px;
+   font-size:14px;
+}
+
+/* selo HYYH */
+.selo-hyyh{
+   top:150px;
+   right:22px;
+   transform:scale(.75);
+}
+
+/* borboletas */
+.borboleta1{
+   width:70px;
+   left:22px;
+   top:160px;
+}
+
+.borboleta3{
+   width:55px;
+   left:90px;
+   top:250px;
+}
+
+/* pétalas */
+.petalastopo{
+   width:140px;
+   top:0;
+   left:-15px;
+}
+
+.petalasbaixo{
+   width:170px;
+   right:-50px;
+   bottom:5px;
+   opacity:.55;
+}
+
+/* fundo imagem */
+.hero-section::before{
+   background-position:35% center;
+}
+}
