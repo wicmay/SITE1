@@ -1,233 +1,181 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>BARMYFORCE - Coletivo ARMY Brasileiro</title>
-  <link rel="stylesheet" href="style.css">
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Plus+Jakarta+Sans:wght@400;500;600&family=Noto+Sans+KR:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Noto+Sans+KR:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
-<main class="site background-ceu-global"> <section id="loginArea" class="hero">
-    <header class="menu">
-      <div class="logo">de ARMY pra ARMY</div>
-      <nav>
-        <a href="#" class="active">início</a>
-        <a href="#">projetos</a>
-        <a href="#">fanbases</a>
-      </nav>
-      <div class="icons">☼ ♫</div>
+  <section id="loginArea">
+    <section class="hero-section" id="inicio">
+      <header class="menu">
+        <div class="logo">de ARMY pra ARMY</div>
+        <nav>
+          <a href="#inicio" class="active">início</a>
+          <a href="#projetos">projetos</a>
+          <a href="#fanbases">fanbases</a>
+        </nav>
+        <div class="icons">☼ ♫</div>
+      </header>
+
+      <div class="decor-hero texto-coreano">영원히 봄날에... 가장 아름다운 순간</div>
+      <div class="decor-hero assinatura">together we bloom.</div>
+      <div class="decor-hero borboleta borboleta1"></div>
+      <div class="decor-hero borboleta borboleta3"></div>
+      <div class="decor-hero selo-hyyh"><strong>花樣<br>年華</strong><span>HYYH</span></div>
+
+      <div class="hero-centro">
+        <div class="brilho-fundo"></div>
+        <span class="mini-tag">inspirado em HYYH</span>
+        <h1>projetos que<br>ganham vida.</h1>
+        <p>Organização, carinho e propósito para conectar o ARMY brasileiro...</p>
+        <button onclick="loginGoogle()" type="button" class="btn-dark">Acessar Projetos</button>
+      </div>
+
+      <img src="petalastopo.png" class="decor-hero petalastopo" alt="">
+      <img src="petalasbaixo.png" class="decor-hero petalasbaixo" alt="">
+    <div class="papel-rasgado"></div>
+    </section>
+
+    <main class="scrapbook-section" id="fanbases">
+      <div class="scrapbook-linha-unica">
+        <div class="bloco-polaroid esquerda">
+          <div class="fita"></div>
+          <div class="polaroid-card">
+            <img src="polaroid1.jpg" alt="BTS">
+            <p class="font-coreana">함께라서 더 빛났던 날들 ♡</p>
+          </div>
+        </div>
+
+        <section class="bloco-sobre">
+          <span class="tag">sobre nós</span>
+          <h2>prazer,<br>somos as<br>fanbases do BTS ♡</h2>
+          <p>Apaixonadas por transformar ideias em experiências reais...</p>
+        </section>
+
+        <section class="bloco-pilares">
+          <span class="tag">nossos pilares</span>
+          <div class="fundo-pilares">
+            <article class="pilar"><h3>transparência</h3><p>processos claros...</p></article>
+            <article class="pilar"><h3>democracia</h3><p>participação ativa...</p></article>
+            <article class="pilar sem-borda"><h3>conexão</h3><p>unindo o fandom...</p></article>
+          </div>
+        </section>
+
+        <div class="bloco-polaroid direita">
+          <div class="fita"></div>
+          <div class="polaroid-card">
+            <img src="polaroid2.jpg" alt="BTS">
+            <p class="font-coreana">방탄소년단 ♡</p>
+          </div>
+          <div class="young-forever">YOUNG FOREVER</div>
+        </div>
+      </div>
+    </main>
+  </section>
+
+
+<section id="areaVerificacao" class="verificacao" style="display: none;">
+
+  <button class="voltar" onclick="sair()" type="button">
+    ← VOLTAR
+  </button>
+
+  <div class="scrapbook-container">
+    <div class="borboleta borboleta1"></div>
+<div class="borboleta borboleta3"></div>
+
+    <div class="cherry-blossom"></div>
+
+    <div class="butterfly butterfly-pink"></div>
+    <div class="butterfly butterfly-blue"></div>
+    <div class="butterfly butterfly-train"></div>
+
+    <header class="header-section">
+
+      <div class="pin-polaroid-group">
+        <div class="push-pin"></div>
+
+        <div class="bts-polaroid">
+          <img src="polaroid2.jpg" alt="BTS">
+          <p>우리 함께한 시간 ♡</p>
+        </div>
+
+        <div class="spring-polaroid">
+          <img src="hyyh-bg.jpg" alt="Paisagem HYYH">
+          <p>봄날의 기억, 찬란했던 우리</p>
+        </div>
+      </div>
+
+      <div class="title-timer-group">
+        <div class="main-title-section">
+          <h1>모든 기억, 우리가 함께한 시간</h1>
+          <p id="statusVerificacao">
+            Localização confirmada. Responda às perguntas abaixo.
+          </p>
+        </div>
+
+        <div class="timer-section">
+          <div class="timer-tape">
+            <span>Tempo restante: <strong id="tempo">30</strong>s</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="medallion-butterfly-group">
+        <div class="medallion-section">
+          <div class="medallion">
+            <p>花樣<br>年華</p>
+            <p>HYYH</p>
+          </div>
+
+          <h2>BARMYFORCE</h2>
+        </div>
+
+        <div class="sea-polaroid">
+          <img src="hyyh-bg.jpg" alt="Paisagem">
+          <p>영원히, 함께 ♡</p>
+        </div>
+      </div>
+
     </header>
 
-    <div class="borboletas-grupo">
-      <div class="borboleta">🦋</div>
-      <div class="borboleta b2">🦋</div>
-      <div class="borboleta b3">🦋</div>
-    </div>
+    <main class="questions-grid">
+      <form id="formPerguntas" class="grid-perguntas"></form>
+    </main>
 
-    <div class="texto-coreano visible-text font-georgia">
-      화양연화<br>
-      그 순간의 아름다움,<br>
-      영원히.
-    </div>
+    <section class="lower-section">
+      <article class="poem-note">
+        <div class="washi-tape-bottom"></div>
 
-    <div class="selo-hyyh rect">
-      <strong>花樣<br>年華</strong>
-      <hr class="selo-linha">
-      <span>HYYH</span>
-      <div class="badge-num">2</div>
-    </div>
+        <p>
+          우리 함께한 시간이 이토록 찬란할 줄은 몰랐어<br>
+          스쳐 지나갈 줄만 알았던 모든 순간들이<br>
+          결국 내게 가장 눈부신 계절이 되어<br>
+          언젠가 우리 다시 만날 그날을 기다리며
+        </p>
+      </article>
 
-    <div class="hero-centro">
-      <h1>projetos que<br>ganham vida.</h1>
-      <p>Organização, carinho e propósito para conectar o ARMY brasileiro.</p>
-      <button onclick="loginGoogle()" class="botao-login">Faça login ↓</button>
-    </div>
+      <div class="train-landscape-group">
+  <img src="ponto-onibus.jpg" class="train-illustration-img" alt="">
+</div>
 
-    <div class="papel-rasgado-transicao"></div>
-  </section>
+    <button onclick="verificarRespostas()" type="button" class="btn-confirmar">
+      CONFIRMAR ACESSO
+    </button>
 
-  <section class="papel-secao">
-    <div class="polaroid-wrapper esquerda">
-      <div class="fita-adesiva t1"></div>
-      <div class="polaroid">
-        <img src="polaroid1.jpg" alt="Polaroid BTS">
-        <p class="handwriting-coreano visible-text">함께라서 더 빛났던 날들 ♡</p>
-      </div>
-    </div>
+    <footer class="footer">
+      <p>BARMYFORCE — Por e para ARMY. Para sempre, juntos.</p>
+    </footer>
 
-    <div class="conteudo-baixo">
-      <div class="sobre">
-        <small>sobre nós</small>
-        <h2>prazer,<br>somos <span style="display:block; margin-top:5px;"> as fanbases do BTS ♡</span></h2>
-        <p>apaixonadas por transformar ideias em experiências unicas. criatividade, estratégia e empatia guiam cada projeto.</p>
-        <a href="#" class="saiba-mais">saiba mais sobre nós →</a>
-      </div>
+  </div>
 
-      <div class="pilares">
-        <small>nossos pilares</small>
-        <div class="cards-pilares">
-          <div class="pilar sem-borda">
-            <div class="pilar-icone">🔍</div>
-            <h3>transparência</h3>
-            <p>processos e finanças claros e auditáveis.</p>
-          </div>
-          <div class="pilar">
-            <div class="pilar-icone">🗳️</div>
-            <h3>democracia</h3>
-            <p>participação ativa do ARMY nas decisões coletivas.</p>
-          </div>
-          <div class="pilar">
-            <div class="pilar-icone">✈</div>
-            <h3>conexão</h3>
-            <p>unindo o fandom com propósito e carinho.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="polaroid-wrapper direita">
-      <div class="polaroid">
-        <img src="polaroid2.jpg" alt="Polaroid BTS">
-        <p class="handwriting-coreano visible-text">방탄소년단 ♡</p>
-      </div>
-      <div class="young visible-text font-stamp">YOUNG FOREVER</div>
-    </div>
-  </section>
-
-  <section id="areaVerificacao" class="verificacao scrapbook-visual">
-    <button class="voltar" onclick="sair()">← VOLTAR</button>
-    <div class="topo-verificacao">
-      <div class="icone">🦋</div>
-      <h2>VERIFICAÇÃO DE ACESSO</h2>
-      <p id="statusVerificacao">Verificando acesso...</p>
-      <div class="timer">
-        <span id="tempo">30</span>
-        <small>SEGUNDOS</small>
-      </div>
-    </div>
-    <form id="formPerguntas" class="grid-perguntas"></form>
-    <button onclick="verificarRespostas()" type="button" class="confirmar">CONFIRMAR ACESSO</button>
-    <p class="restrito">Acesso restrito a ARMYs brasileiras.</p>
-  </section>
-
-  <section id="mensagemNegada" class="verificacao scrapbook-visual" style="display: none; text-align: center; padding: 100px 20px;">
-    <button class="voltar" onclick="sair()">← VOLTAR</button>
-    <div class="topo-verificacao">
-        <div class="icone">🦋</div>
-        <h2 style="color: #d6988c; font-family: 'Playfair Display', serif;">ACESSO NEGADO</h2>
-        <p id="motivoNegado" style="color: #2c4a6f; font-weight: 500; margin: 20px 0;"></p>
-        <button onclick="window.mostrar('loginArea')" class="saiba-mais" style="font-weight: bold; background: transparent; border: none; cursor: pointer;">← Voltar ao Início</button>
-    </div>
-  </section>
-
-  <section id="areaProjetos" class="projetos-final-scrapbook projects-page-fiel">
-    
-    <header class="scrapbook-header projects-fiel-header">
-        <div class="header-escola-container fiel-side">
-            <button class="sair-scrapbook" onclick="sair()">← SAIR</button>
-            <div class="butterfly-badge">🦋</div>
-            <strong>ACESSO LIBERADO</strong>
-            <p>Bem-vinda à área de projetos!</p>
-        </div>
-        
-        <div class="titulo-central-container fiel-center">
-            <h2>PROJETOS DISPONÍVEIS</h2>
-            <p>Aqui transformamos ideias em experiências para o fandom brasileiro.</p>
-        </div>
-
-        <div class="hyyh-badge-scrapbook fiel-side">
-            <div class="selo-hyyh fiel-border">
-                <strong>花樣<br>年華</strong>
-                <hr class="selo-linha fiel-border">
-                <span>HYYH</span>
-            </div>
-        </div>
-    </header>
-
-    <div class="grid-projetos-scrap fiel-grid">
-      
-      <div class="card-projeto-wrapper fiel-card card1 paper-texture">
-        <div class="fita-adesiva tape-top-left"></div>
-        <div class="card-pilar-conteudo">
-            <div class="icone-card">📣</div>
-            <h3>PROJETO 1</h3>
-            <span class="categoria-tag fiel-tag">DIVULGAÇÃO</span>
-            <p>Colocamos amor e dedicação na divulgação do BTS e de seus projetos.</p>
-            <a href="#" target="_blank" class="acessar-link fiel-link">ACESSAR PROJETO →</a>
-        </div>
-        <div class="flor-decor decor-right"></div>
-      </div>
-
-      <div class="card-projeto-wrapper fiel-card card2 paper-texture">
-        <div class="fita-adesiva tape-top-center"></div>
-        <div class="fita-adesiva tape-bottom-right"></div>
-        <div class="card-pilar-conteudo">
-            <div class="icone-card">♡</div>
-            <h3>PROJETO 2</h3>
-            <span class="categoria-tag fiel-tag">DOAÇÕES</span>
-            <p>Cada gesto faz a diferença. Apoie, compartilhe e transforme realidades com a gente.</p>
-            <a href="#" target="_blank" class="acessar-link fiel-link">ACESSAR PROJETO →</a>
-        </div>
-        <div class="flor-decor decor-bottom"></div>
-      </div>
-
-      <div class="card-projeto-wrapper fiel-card card3 paper-texture">
-        <div class="fita-adesiva tape-top-right"></div>
-        <div class="card-pilar-conteudo">
-            <div class="icone-card">🗳️</div>
-            <h3>PROJETO 3</h3>
-            <span class="categoria-tag fiel-tag">VOTAÇÕES</span>
-            <p>Juntos somos mais fortes nas votações e premiações do BTS!</p>
-            <a href="#" target="_blank" class="acessar-link fiel-link">ACESSAR PROJETO →</a>
-        </div>
-        <div class="flor-decor decor-right"></div>
-      </div>
-
-    </div>
-
-    <div class="scrapbook-footer-decor fiel-footer">
-        <div class="papel-rasgado-transicao scrapbook-transicao fiel-border fiel-tear"></div> 
-
-        <div class="scrapbook-footer-conteudo fiel-footer-content white-background-bottom">
-            
-            <div class="decorative-polaroid left-polaroid fiel-polaroid fiel-pos-left">
-                <div class="fita-adesiva polaroid-tape"></div>
-                <div class="polaroid shadow-light fiel-pol-border">
-                    <img src="polaroid1.jpg" alt="Polaroid BTS">
-                    <p class="handwriting-coreano font-georgia visible-text">함께라서 더 빛났던 날들 ♡</p>
-                </div>
-            </div>
-
-            <div class="center-footer-items perfectly-centered">
-                <div class="scrapbook-butterflies fiel-butterflies">
-                    <div class="borboleta b1">🦋</div>
-                    <div class="borboleta b2">🦋</div>
-                </div>
-
-                <div class="handwriting-notes-coreano font-georgia visible-text centralized-middle-phrase">
-                    화양연화,<br>
-                    그 순간의 아름다움.
-                </div>
-
-                <div class="carimbo-round font-stamp visible-text fiel-stamp">YOUNG FOREVER</div>
-            </div>
-
-            <div class="decorative-polaroid right-polaroid fiel-polaroid fiel-pos-right">
-                <div class="fita-adesiva tape-top-right"></div>
-                <div class="polaroid shadow-light fiel-pol-border">
-                    <img src="polaroid2.jpg" alt="Polaroid BTS">
-                    <p class="handwriting-coreano font-georgia visible-text">방탄소년단 ♡</p>
-                </div>
-            </div>
-        </div>
-    </div>
-  </section>
-
-</main>
-
+</section>
 <script type="module" src="script.js"></script>
-
 </body>
 </html>

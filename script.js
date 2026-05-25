@@ -74,7 +74,7 @@ window.verificarRespostas = function () {
     }
   });
 
-  if (acertos === 3) {
+  if (acertos === 2) {
     window.mostrar("areaProjetos");
   } else {
     negarAcesso("Respostas incorretas. Tente novamente mais tarde.");
@@ -88,6 +88,10 @@ window.sair = async function () {
     console.warn("Erro ao sair:", erro);
   }
   location.reload();
+};
+
+window.abrirProjetos = function () {
+  iniciarVerificacao();
 };
 
 
@@ -126,7 +130,7 @@ async function verificarBrasil() {
 
 function sortearPerguntas() {
   const embaralhadas = [...perguntas].sort(() => Math.random() - 0.5);
-  perguntasSorteadas = embaralhadas.slice(0, 3);
+  perguntasSorteadas = embaralhadas.slice(0, 2);
   let html = "";
   
   perguntasSorteadas.forEach((item, index) => {

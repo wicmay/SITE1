@@ -1,212 +1,1990 @@
-* { margin: 0; padding: 0; box-sizing: border-box; }
+/* =======================================================
+   ESTILO ORIGINAL RESTAURADO
+======================================================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
 
 body {
-  padding: 30px;
   font-family: 'Plus Jakarta Sans', sans-serif;
-  color: #2b4661;
+  color: #29435C;
+  background: #F7F3EC;
   overflow-x: hidden;
-  background: #d4dde6; /* Cor de segurança */
 }
 
-/* --- ESTILOS DE FONTE ESPECÍFICOS (MANTIDOS E REFORÇADOS) --- */
-.font-playfair { font-family: 'Playfair Display', serif; }
-.font-georgia { font-family: 'Georgia', serif; font-style: italic; } /* Pra coreano e escrita manual */
-.font-stamp { font-family: 'Playfair Display', serif; text-transform: uppercase; letter-spacing: 3px; }
-
-/* Manuscritos coreanos escuros e visíveis */
-.handwriting-coreano { font-family: 'Noto Sans KR', sans-serif; font-size: 11px; color: #2c4a6f; text-align: center; margin-top: 10px;}
-.visible-text { color: #2c4a6f !important; }
-
-/* FUNDO GLOBAL DO CÉU NUBLADO - EXATAMENTE COMO NA REFERÊNCIA */
-.background-ceu-global {
-  background: 
-    linear-gradient(to bottom, rgba(220, 235, 245, 0.4), rgba(220, 235, 245, 0.1)),
-    url("hyyh-bg.jpg") no-repeat center center; /* Mesma imagem do hero, mas aplicada globalmente */
-  background-size: cover;
-  background-attachment: fixed; /* O céu fica parado ao rolar */
+img {
+  max-width: 100%;
+  display: block;
 }
 
-.site { max-width: 1440px; margin: auto; border-radius: 24px; overflow: hidden; box-shadow: 0 20px 60px rgba(0, 0, 0, 0.12); }
+h1,
+h2,
+h3 {
+  font-family: 'Playfair Display', serif;
+}
 
-/* HERO (PÁGINA INICIAL) */
-.hero { height: 640px; position: relative; /* Fundo fica transparente pra mostrar o céu global */ background: transparent; z-index: 1; }
+a {
+  color: inherit;
+}
 
-.menu { position: absolute; top: 35px; left: 60px; right: 60px; z-index: 30; display: flex; justify-content: space-between; align-items: center; }
-.logo { font-size: 20px; font-weight: 700; letter-spacing: -0.5px; color: #3b5c7d; }
-.menu nav { display: flex; gap: 35px; }
-.menu a { color: #69839c; text-decoration: none; font-size: 15px; font-weight: 500; transition: color 0.3s; }
-.menu a.active, .menu a:hover { color: #2b4661; border-bottom: 1px solid #2b4661; }
-.icons { font-size: 16px; color: #69839c; display: flex; gap: 15px; }
 
-.borboletas-grupo { position: absolute; top: 90px; left: 80px; z-index: 25; }
-.borboleta { font-size: 24px; opacity: 0.7; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1)); }
-.borboleta.b2 { transform: translate(30px, -10px) scale(0.8) rotate(15deg); opacity: 0.5; }
-.borboleta.b3 { transform: translate(15px, 15px) scale(0.6) rotate(-20deg); opacity: 0.4; }
+/* =======================================================
+    HERO
+======================================================= */
 
-.texto-coreano { position: absolute; top: 210px; left: 80px; z-index: 25; color: #2c4a6f; font-size: 14px; line-height: 1.8; text-shadow: 1px 1px 2px rgba(255,255,255,0.7); }
-
-.selo-hyyh { z-index: 25; border: 1px solid #3b5c7d; color: #3b5c7d; text-align: center; padding: 12px 10px; font-family: 'Playfair Display', serif; }
-.selo-hyyh.rect { position: absolute; top: 130px; right: 80px; width: 90px; }
-.selo-hyyh strong { font-size: 20px; font-weight: 400; line-height: 1.1; letter-spacing: 2px; display: block; }
-.selo-linha { border: 0; border-top: 1px solid #3b5c7d; margin: 8px 0; }
-.selo-hyyh span { font-size: 10px; letter-spacing: 4px; font-weight: 600; display: block; }
-.badge-num { position: absolute; top: -12px; right: -8px; font-size: 14px; font-weight: bold; }
-
-.hero-centro { position: absolute; top: 140px; left: 50%; transform: translateX(-50%); z-index: 26; width: 100%; max-width: 700px; text-align: center; }
-.hero-centro h1 { font-family: 'Playfair Display', serif; font-size: 76px; font-weight: 400; line-height: 1.05; color: #274463; letter-spacing: -1px; }
-.hero-centro p { margin-top: 15px; color: #2c4a6f; font-size: 15px; letter-spacing: 0.5px; }
-
-.botao-login { margin-top: 30px; padding: 10px 32px; border-radius: 50px; border: 1px solid #274463; background: transparent; color: #274463; font-size: 14px; font-weight: 500; cursor: pointer; transition: all 0.3s; }
-.botao-login:hover { background: #274463; color: #fff; }
-
-.papel-rasgado-transicao { position: absolute; bottom: -1px; left: 0; width: 100%; height: 50px; background: #f1ede4; z-index: 35; clip-path: polygon(0 65%, 4% 45%, 9% 60%, 15% 40%, 23% 55%, 32% 38%, 41% 58%, 52% 43%, 63% 55%, 72% 38%, 81% 58%, 90% 45%, 95% 55%, 100% 40%, 100% 100%, 0% 100%); }
-
-/* SOBRE NÓS / PILARES (ESTILO SCRAPBOOK CLÁSSICO) */
-.papel-secao { background: #f1ede4; padding: 40px 60px 80px 60px; display: grid; grid-template-columns: 260px 1fr 260px; gap: 30px; align-items: flex-start; position: relative; margin-top: -160px; z-index: 5; }
-
-.conteudo-baixo { display: flex; gap: 50px; align-items: flex-start; padding-top: 40px; }
-
-.sobre { flex: 1.2; }
-.sobre small, .pilares small { display: block; color: #4a6f91; font-size: 12px; text-transform: lowercase; margin-bottom: 12px; letter-spacing: 1px; }
-.sobre h2 { font-family: 'Playfair Display', serif; font-size: 34px; font-weight: 400; line-height: 1.1; color: #274463; }
-.sobre h2 span { color: #43698f; }
-.sobre p { margin-top: 15px; color: #444; font-size: 13.5px; line-height: 1.6; }
-.saiba-mais { display: inline-block; margin-top: 15px; color: #2c4a6f; font-size: 13px; font-weight: 600; text-decoration: none; }
-
-.pilares { flex: 1.8; }
-.cards-pilares { display: flex; margin-top: 15px; }
-.pilar { flex: 1; padding: 0 20px; border-left: 1px dashed #c4bdb2; text-align: center; }
-.pilar.sem-borda { border-left: none; padding-left: 0; }
-.pilar-icone { font-size: 22px; margin-bottom: 10px; opacity: 0.8; }
-.pilar h3 { font-family: 'Playfair Display', serif; font-size: 18px; font-weight: 400; color: #2b2b2b; margin-bottom: 6px; }
-.pilar p { color: #444; font-size: 12px; line-height: 1.5; }
-
-/* POLAROIDS GERAIS */
-.polaroid-wrapper { position: relative; }
-.polaroid { background: #ffffff; padding: 12px 12px 28px 12px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06); border-radius: 1px; width: 100%; }
-.polaroid img { width: 100%; height: 160px; object-fit: cover; display: block; filter: sepia(8%) contrast(96%); }
-.fita-adesiva { position: absolute; z-index: 5; width: 75px; height: 24px; background: rgba(215, 210, 195, 0.7); border: 1px solid rgba(255,255,255,0.2); box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
-
-.polaroid-wrapper.esquerda { transform: rotate(-4deg) translateY(-20px); z-index: 12; }
-.polaroid-wrapper.direita { transform: rotate(3deg) translateY(0px); z-index: 12; }
-.esquerda .fita-adesiva { top: 5px; left: 35%; transform: rotate(-12deg); }
-.young { text-align: center; margin-top: 45px; color: #2c4a6f; font-size: 10px; }
-
-/* --- PROJETOS (SCRAPBOOK RAIZ FUTEBOL CLUBE) --- */
-.projetos-final-scrapbook { display: none; position: relative; min-height: 100vh; padding: 60px 8%; background: transparent; z-index: 1; }
-
-.scrapbook-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 60px; }
-.header-escola-container { color: #2c4a6f; position: relative; }
-.sair-scrapbook { background: transparent; border: none; color: #2c4a6f; font-weight: bold; cursor: pointer; font-size: 14px; margin-bottom: 20px; }
-.butterfly-badge { font-size: 24px; color: #3b5c7d; margin-bottom: 8px; }
-.header-escola-container strong { font-size: 15px; letter-spacing: 0.5px; }
-.header-escola-container p { font-size: 12px; opacity: 0.8; }
-
-.titulo-central-container { text-align: center; max-width: 600px; }
-.titulo-central-container h2 { font-family: 'Playfair Display', serif; font-size: 46px; font-weight: 400; color: #274463; letter-spacing: -0.5px; line-height: 1.1; }
-.titulo-central-container p { margin-top: 15px; color: #2c4a6f; font-size: 15px; }
-
-.hyyh-badge-scrapbook .selo-hyyh { border-color: rgba(59, 92, 125, 0.4); color: rgba(59, 92, 125, 0.6); }
-
-/* GRID E CARDS DE PAPEL */
-.grid-projetos-scrap { display: grid; grid-template-columns: repeat(3, 1fr); gap: 25px; position: relative; z-index: 10; margin-top: 40px; }
-
-.card-projeto-wrapper {
-  background: #fdfaf4; /* Cor de papel bege suave */
-  border-radius: 12px;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
-  padding: 35px 25px;
+.hero-section {
   position: relative;
-  transition: transform 0.3s;
-}
+  width: 100%;
+  min-height: 720px;
+  overflow: hidden;
 
-.card-projeto-wrapper:hover { transform: translateY(-5px); }
+  background:
+    linear-gradient(
+      180deg,
+      rgba(194, 238, 235, 0.18) 0%,
+      rgba(255, 255, 255, 0.08) 42%,
+      rgba(24, 31, 43, 0.34) 100%
+    ),
+    url("hyyh-bg.jpg") no-repeat center bottom;
 
-/* FITAS ADESIVAS NOS CARDS (Simulação de textura/tipo) */
-.tape-top-left { top: -10px; left: 15%; transform: rotate(-5deg); width: 80px; background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mP8z8BQDwAEhQGAhKmMIQAAAABJRU5ErkJggg==') repeat; background-color: rgba(225, 218, 200, 0.8); } /* Textura leve */
-.tape-top-center { top: -12px; left: 40%; transform: rotate(3deg); width: 90px; background: repeating-linear-gradient(45deg, transparent, transparent 5px, rgba(0,0,0,0.03) 5px, rgba(0,0,0,0.03) 10px), rgba(215, 220, 230, 0.8); } /* Xadrez azulzinho */
-.tape-bottom-right { bottom: -10px; right: 10%; transform: rotate(-10deg); width: 70px; background-color: rgba(225, 218, 200, 0.8); }
-.tape-top-right { top: -10px; right: 20%; transform: rotate(8deg); width: 80px; background-color: rgba(230, 225, 215, 0.8); }
+  background-size: cover;
 
-.card-pilar-conteudo { text-align: left; color: #274463; position: relative; z-index: 2; }
-.icone-card { font-size: 26px; color: #d6988c; margin-bottom: 12px; }
-.card-pilar-conteudo h3 { font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 700; margin-bottom: 10px; color: #274463; }
-.categoria-tag { display: inline-block; padding: 2px 0; color: #69839c; font-size: 11px; font-weight: bold; margin-bottom: 15px; letter-spacing: 1px; }
-.card-pilar-conteudo p { color: #555; font-size: 13px; line-height: 1.6; margin-bottom: 25px; }
-.acessar-link { color: #43698f; text-decoration: none; font-size: 12px; font-weight: bold; }
-
-/* DECORAÇÕES DE FLORES (Opcional, simulado) */
-.flor-decor { position: absolute; opacity: 0.4; pointer-events: none; }
-.decor-right { right: 10px; bottom: 20px; width: 40px; height: 100px; background: url('flower1.png') no-repeat center/contain; }
-.decor-bottom { right: 20px; bottom: 20px; width: 40px; height: 80px; background: url('flower2.png') no-repeat center/contain; }
-
-/* RODAPÉ SCRAPBOOK (DE VOLTA ÀS FITAS E POLAROIDS) */
-.scrapbook-footer-decor { position: relative; margin-top: 60px; width: calc(100% + 16%); margin-left: -8%; }
-
-/* --- AJUSTE: FUNDO BRANCO NA PARTE DEBAIXO --- */
-.white-background-bottom {
-  background: #ffffff !important; /* Força o fundo branco */
-}
-
-/* O efeito do papel rasgado também deve acompanhar o fundo branco */
-.scrapbook-transicao {
-    background: #ffffff; /* Era azul, agora é BRANCO */
-    position: static;
-    clip-path: polygon(0 40%, 4% 55%, 9% 40%, 15% 60%, 23% 45%, 32% 62%, 41% 42%, 52% 57%, 63% 45%, 72% 62%, 81% 42%, 90% 55%, 95% 45%, 100% 60%, 100% 100%, 0% 100%);
-}
-
-/* CONTAINER GERAL DO RODAPÉ (AGORA BRANCO) */
-.scrapbook-footer-conteudo {
-    padding: 40px 8% 60px 8%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    position: relative;
-    z-index: 10;
-}
-
-/* POLAROIDS NO RODAPÉ */
-.decorative-polaroid .polaroid { width: 220px; padding: 12px 12px 35px 12px; }
-.decorative-polaroid .polaroid img { height: 160px; }
-
-.left-polaroid { transform: rotate(-6deg) translateY(-40px); }
-.left-polaroid .polaroid-tape { top: -10px; left: 35%; width: 80px; transform: rotate(-5deg); background-color: rgba(225, 218, 200, 0.9); }
-
-/* --- AJUSTE: MENSAGEM NO MEIOOO PERFEITAMENTE CENTRALIZADA --- */
-.perfectly-centered {
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  flex-grow: 1; /* Faz esse bloco ocupar todo o espaço central disponível */
+}
+
+/* brilho editorial no céu */
+.hero-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 56% 32%, rgba(255, 255, 255, 0.72), transparent 26%),
+    radial-gradient(circle at 78% 18%, rgba(255, 239, 177, 0.38), transparent 25%),
+    linear-gradient(90deg, rgba(255,255,255,0.05), rgba(255,255,255,0.2), rgba(255,255,255,0.02));
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* leve vinheta */
+.hero-section::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(
+      90deg,
+      rgba(247, 243, 236, 0.08) 0%,
+      transparent 20%,
+      transparent 78%,
+      rgba(247, 243, 236, 0.12) 100%
+    );
+  pointer-events: none;
+  z-index: 2;
+}
+
+
+/* =======================================================
+    MENU
+======================================================= */
+
+.menu {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 30;
+
+  padding: 30px 60px;
+
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+}
+
+.logo {
+  justify-self: start;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: #29435C;
+}
+
+.menu nav {
+  display: flex;
+  align-items: center;
+  gap: 38px;
+}
+
+.menu a {
+  text-decoration: none;
+  color: rgba(41, 67, 92, 0.72);
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1;
+  position: relative;
+  transition: 0.25s ease;
+}
+
+.menu a::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -7px;
+  width: 0;
+  height: 2px;
+  background: #29435C;
+  transform: translateX(-50%);
+  transition: 0.25s ease;
+}
+
+.menu a:hover,
+.menu a.active {
+  color: #29435C;
+}
+
+.menu a:hover::after,
+.menu a.active::after {
+  width: 100%;
+}
+
+.icons {
+  justify-self: end;
+  font-size: 15px;
+  color: #29435C;
+  letter-spacing: 6px;
+}
+
+
+/* =======================================================
+    DECORAÇÕES HERO
+======================================================= */
+
+.decor-hero {
+  position: absolute;
+  z-index: 8;
+  color: #29435C;
+}
+
+.texto-coreano {
+  left: 12%;
+  top: 36%;
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size: 12px;
+  line-height: 1.9;
+  opacity: 0.58;
+  writing-mode: horizontal-tb;
+}
+
+.assinatura {
+  right: 26%;
+  top: 47%;
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: 15px;
+  opacity: 0.34;
+  transform: rotate(-8deg);
+}
+
+.borboleta {
+  font-size: 26px;
+  filter: drop-shadow(0 8px 8px rgba(41, 67, 92, 0.24));
+}
+
+.borboleta-1 {
+  left: 12%;
+  top: 29%;
+  transform: rotate(-14deg);
+}
+
+.borboleta-2 {
+  right: 47%;
+  bottom: 12%;
+  transform: rotate(18deg);
+}
+
+.selo-hyyh {
+  top: 23%;
+  right: 10%;
+
+  width: 70px;
+  height: 118px;
+
+  border: 1px solid rgba(41, 67, 92, 0.35);
+  background: rgba(247, 243, 236, 0.38);
+  backdrop-filter: blur(3px);
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  box-shadow: 0 18px 35px rgba(41, 67, 92, 0.06);
+}
+
+.selo-hyyh strong {
+  font-family: 'Playfair Display', serif;
+  font-size: 20px;
+  line-height: 1.08;
+  font-weight: 400;
+  letter-spacing: 3px;
+}
+
+.selo-hyyh span {
+  margin-top: 16px;
+  padding-top: 11px;
+  border-top: 1px solid rgba(41, 67, 92, 0.28);
+
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 4px;
+}
+
+
+/* =======================================================
+    CONTEÚDO HERO
+======================================================= */
+
+.hero-centro {
+  position: relative;
+  z-index: 10;
+  text-align: center;
+
+  width: min(760px, 90vw);
+  margin-top: 20px;
+  padding-top: 40px;
+}
+
+.brilho-fundo {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  z-index: -1;
+
+  width: 112%;
+  height: 128%;
+
+  transform: translate(-50%, -50%);
+
+  background:
+    radial-gradient(
+      ellipse,
+      rgba(255, 255, 255, 0.76) 0%,
+      rgba(255, 255, 255, 0.45) 32%,
+      rgba(255, 255, 255, 0) 72%
+    );
+}
+
+.mini-tag {
+  display: inline-block;
+  margin-bottom: 12px;
+
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: rgba(41, 67, 92, 0.68);
+}
+
+.hero-centro h1 {
+  font-size: clamp(52px, 6vw, 82px);
+  line-height: 0.95;
+  font-weight: 400;
+  letter-spacing: -0.055em;
+  color: #29435C;
+}
+
+.hero-centro p {
+  max-width: 610px;
+  margin: 24px auto 0;
+
+  font-size: 15px;
+  line-height: 1.7;
+  font-weight: 600;
+  color: rgba(41, 67, 92, 0.92);
+}
+
+.btn-dark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  margin-top: 30px;
+  min-width: 210px;
+  height: 48px;
+
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,0.18);
+
+  background: #29435C;
+  color: #fff;
+
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 700;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+
+  box-shadow: 0 16px 34px rgba(41, 67, 92, 0.28);
+  cursor: pointer;
+  transition: 0.28s ease;
+}
+
+.btn-dark:hover {
+  transform: translateY(-3px);
+  background: #1e3449;
+  box-shadow: 0 20px 42px rgba(41, 67, 92, 0.35);
+}
+
+
+/* pétalas */
+.petala {
+  position: absolute;
+  z-index: 11;
+  color: rgba(247, 115, 150, 0.56);
+  font-size: 18px;
+  pointer-events: none;
+}
+
+.petala-1 {
+  right: 29%;
+  top: 34%;
+  transform: rotate(22deg);
+}
+
+.petala-2 {
+  right: 20%;
+  top: 48%;
+  transform: rotate(-18deg);
+}
+
+.petala-3 {
+  right: 35%;
+  bottom: 16%;
+  transform: rotate(35deg);
+}
+
+.petala-4 {
+  left: 18%;
+  top: 38%;
+  transform: rotate(-12deg);
+}
+
+
+/* papel rasgado */
+.papel-rasgado {
+  position: absolute;
+  left: 0;
+  bottom: -1px;
+  z-index: 20;
+
+  width: 100%;
+  height: 72px;
+
+  background: #F7F3EC;
+
+  clip-path: polygon(
+    0 62%,
+    5% 54%,
+    10% 66%,
+    17% 48%,
+    24% 64%,
+    32% 52%,
+    39% 68%,
+    48% 50%,
+    56% 63%,
+    64% 49%,
+    73% 65%,
+    82% 48%,
+    91% 63%,
+    100% 50%,
+    100% 100%,
+    0 100%
+  );
+}
+
+
+/* =======================================================
+    SCRAPBOOK
+======================================================= */
+
+.scrapbook-section {
+  position: relative;
+  z-index: 25;
+
+  background:
+    radial-gradient(circle at 18% 22%, rgba(255,255,255,0.88), transparent 18%),
+    radial-gradient(circle at 82% 18%, rgba(234, 228, 218, 0.58), transparent 21%),
+    #F7F3EC;
+
+  padding: 0 38px 112px;
+}
+
+.scrapbook-section::before {
+  content: "✦";
+  position: absolute;
+  left: 36px;
+  top: 34px;
+
+  font-family: 'Playfair Display', serif;
+  font-size: 54px;
+  color: rgba(41, 67, 92, 0.12);
+}
+
+.scrapbook-linha-unica {
+  width: min(1360px, 100%);
+  margin: 0 auto;
+
+  display: grid;
+  grid-template-columns: 260px minmax(210px, 280px) minmax(390px, 1fr) 260px;
+  gap: 38px;
+  align-items: start;
+}
+
+
+/* =======================================================
+    POLAROIDS
+======================================================= */
+
+.bloco-polaroid {
+  position: relative;
+  z-index: 10;
+  width: 260px;
+  margin-top: -48px;
+}
+
+.esquerda {
+  transform: rotate(-4deg);
+}
+
+.direita {
+  transform: rotate(4deg);
+}
+
+.polaroid-card {
+  position: relative;
+
+  background: #fff;
+  padding: 13px 13px 34px;
+
+  box-shadow:
+    0 22px 45px rgba(41, 67, 92, 0.10),
+    0 3px 10px rgba(41, 67, 92, 0.06);
+
+  border: 1px solid rgba(41, 67, 92, 0.04);
+}
+
+.polaroid-card::after {
+  content: "";
+  position: absolute;
+  inset: 12px 12px auto 12px;
+  height: 156px;
+
+  background: linear-gradient(
+    130deg,
+    rgba(255,255,255,0.24),
+    transparent 45%
+  );
+
+  pointer-events: none;
+}
+
+.polaroid-card img {
+  width: 100%;
+  height: 162px;
+  object-fit: cover;
+  filter: saturate(0.92) contrast(1.05) sepia(0.06);
+}
+
+.font-coreana {
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  color: #29435C;
+  text-align: center;
+  margin-top: 12px;
+}
+
+.fita {
+  position: absolute;
+  top: -14px;
+  left: 50%;
+  z-index: 20;
+
+  width: 86px;
+  height: 27px;
+
+  transform: translateX(-50%) rotate(-7deg);
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(211, 204, 184, 0.7),
+      rgba(235, 230, 211, 0.92),
+      rgba(211, 204, 184, 0.72)
+    );
+
+  box-shadow: 0 4px 12px rgba(41, 67, 92, 0.10);
+}
+
+.direita .fita {
+  transform: translateX(-50%) rotate(8deg);
+}
+
+.young-forever {
+  text-align: center;
+  margin-top: 34px;
+
+  font-family: 'Playfair Display', serif;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.45em;
+  color: #29435C;
+}
+
+
+/* =======================================================
+    SOBRE
+======================================================= */
+
+.bloco-sobre {
+  padding-top: 86px;
+}
+
+.tag {
+  display: block;
+
+  margin-bottom: 24px;
+
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: lowercase;
+  color: rgba(41, 67, 92, 0.78);
+}
+
+.bloco-sobre h2 {
+  font-size: clamp(34px, 3.2vw, 48px);
+  line-height: 0.94;
+  font-weight: 400;
+  letter-spacing: -0.055em;
+  color: #29435C;
+}
+
+.bloco-sobre p {
+  max-width: 285px;
+  margin-top: 22px;
+
+  font-size: 14px;
+  line-height: 1.72;
+  color: rgba(41, 67, 92, 0.82);
+}
+
+
+/* =======================================================
+    PILARES
+======================================================= */
+
+.bloco-pilares {
+  padding-top: 86px;
+}
+
+.fundo-pilares {
+  position: relative;
+
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+
+  min-height: 140px;
+
+  padding: 24px 26px;
+
+  border-radius: 10px;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(234, 228, 218, 0.74),
+      rgba(255, 255, 255, 0.28)
+    );
+
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.5),
+    0 18px 38px rgba(41, 67, 92, 0.045);
+}
+
+.fundo-pilares::before {
+  content: "";
+  position: absolute;
+  inset: 10px;
+
+  border: 1px solid rgba(41, 67, 92, 0.035);
+  border-radius: 8px;
+  pointer-events: none;
+}
+
+.pilar {
+  position: relative;
+
+  padding: 0 22px;
+  text-align: center;
+
+  border-right: 1px dashed rgba(41, 67, 92, 0.22);
+}
+
+.pilar.sem-borda {
+  border-right: none;
+}
+
+.icone {
+  margin-bottom: 13px;
+
+  font-size: 24px;
+  line-height: 1;
+
+  filter: drop-shadow(0 5px 4px rgba(41, 67, 92, 0.12));
+}
+
+.pilar h3 {
+  margin-bottom: 8px;
+
+  font-size: 17px;
+  line-height: 1;
+  font-weight: 700;
+  color: #29435C;
+}
+
+.pilar p {
+  max-width: 150px;
+  margin: 0 auto;
+
+  font-size: 12px;
+  line-height: 1.5;
+  color: rgba(41, 67, 92, 0.74);
+}
+
+
+/* =======================================================
+    RESPONSIVO TABLET
+======================================================= */
+
+@media (max-width: 1100px) {
+  .hero-section {
+    min-height: 82vh;
+  }
+
+  .menu {
+    padding: 24px 32px;
+  }
+
+  .scrapbook-linha-unica {
+    grid-template-columns: 220px 1fr 1.4fr 220px;
+    gap: 26px;
+  }
+
+  .bloco-polaroid {
+    width: 220px;
+  }
+
+  .polaroid-card img {
+    height: 140px;
+  }
+
+  .bloco-sobre h2 {
+    font-size: 34px;
+  }
+
+  .fundo-pilares {
+    padding: 20px 18px;
+  }
+
+  .pilar {
+    padding: 0 14px;
+  }
+}
+
+
+/* =======================================================
+    RESPONSIVO CELULAR
+======================================================= */
+
+@media (max-width: 760px) {
+  .hero-section {
+    min-height: 760px;
+    align-items: flex-start;
+
+    background-position: center bottom;
+  }
+
+  .menu {
+    padding: 22px 20px;
+    grid-template-columns: auto 1fr auto;
+    gap: 16px;
+  }
+
+  .logo {
+    font-size: 13px;
+    white-space: nowrap;
+  }
+
+  .menu nav {
+    justify-content: center;
+    gap: 18px;
+  }
+
+  .menu a {
+    font-size: 12px;
+  }
+
+  .icons {
+    font-size: 13px;
+    letter-spacing: 2px;
+  }
+
+  .hero-centro {
+    width: min(390px, calc(100% - 40px));
+    margin-top: 132px;
+  }
+
+  .mini-tag {
+    font-size: 9px;
+    letter-spacing: 0.2em;
+  }
+
+  .hero-centro h1 {
+    font-size: 48px;
+    line-height: 0.96;
+  }
+
+  .hero-centro p {
+    max-width: 330px;
+    margin-top: 17px;
+
+    font-size: 12px;
+    line-height: 1.55;
+  }
+
+  .btn-dark {
+    min-width: 174px;
+    height: 42px;
+    margin-top: 22px;
+
+    font-size: 12px;
+  }
+
+  .texto-coreano,
+  .assinatura,
+  .selo-hyyh {
+    display: none;
+  }
+
+  .borboleta-1 {
+    left: 14%;
+    top: 23%;
+    font-size: 20px;
+  }
+
+  .borboleta-2 {
+    right: 16%;
+    bottom: 25%;
+    font-size: 22px;
+  }
+
+  .petala {
+    font-size: 14px;
+  }
+
+  .papel-rasgado {
+    height: 58px;
+  }
+
+
+  .scrapbook-section {
+    padding: 0 20px 80px;
+  }
+
+  .scrapbook-section::before {
+    top: 22px;
+    left: 22px;
+    font-size: 42px;
+  }
+
+  .scrapbook-linha-unica {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+    align-items: start;
+  }
+
+  .bloco-polaroid {
+    width: 100%;
+    margin-top: -30px;
+  }
+
+  .esquerda {
+    transform: rotate(-5deg);
+  }
+
+  .direita {
+    transform: rotate(5deg);
+  }
+
+  .polaroid-card {
+    padding: 9px 9px 27px;
+  }
+
+  .polaroid-card img {
+    height: 112px;
+  }
+
+  .font-coreana {
+    font-size: 9px;
+    margin-top: 8px;
+  }
+
+  .fita {
+    width: 62px;
+    height: 21px;
+    top: -10px;
+  }
+
+  .young-forever {
+    display: none;
+  }
+
+  .bloco-sobre {
+    grid-column: 1 / -1;
+    padding-top: 34px;
+    text-align: center;
+  }
+
+  .tag {
+    margin-bottom: 14px;
+    font-size: 11px;
+  }
+
+  .bloco-sobre h2 {
+    font-size: 38px;
+    line-height: 0.94;
+  }
+
+  .bloco-sobre p {
+    max-width: 330px;
+    margin: 18px auto 0;
+    font-size: 13px;
+  }
+
+  .bloco-pilares {
+    grid-column: 1 / -1;
+    padding-top: 26px;
+    text-align: center;
+  }
+
+  .fundo-pilares {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+
+    padding: 18px 10px;
+    border-radius: 12px;
+  }
+
+  .pilar {
+    padding: 0 8px;
+  }
+
+  .icone {
+    font-size: 21px;
+    margin-bottom: 9px;
+  }
+
+  .pilar h3 {
+    font-size: 13px;
+  }
+
+  .pilar p {
+    font-size: 10px;
+    line-height: 1.35;
+  }
+}
+
+
+/* =======================================================
+    CELULAR PEQUENO
+======================================================= */
+
+@media (max-width: 430px) {
+  .menu {
+    grid-template-columns: 1fr auto;
+    row-gap: 14px;
+  }
+
+  .menu nav {
+    grid-column: 1 / -1;
+    grid-row: 2;
+    justify-content: flex-start;
+  }
+
+  .icons {
+    grid-column: 2;
+  }
+
+  .hero-centro {
+    margin-top: 150px;
+  }
+
+  .hero-centro h1 {
+    font-size: 43px;
+  }
+
+  .hero-centro p {
+    font-size: 11.5px;
+  }
+
+  .scrapbook-linha-unica {
+    gap: 14px;
+  }
+
+  .polaroid-card img {
+    height: 96px;
+  }
+
+  .fundo-pilares {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    padding: 24px 22px;
+  }
+
+  .pilar {
+    border-right: none;
+    border-bottom: 1px dashed rgba(41, 67, 92, 0.2);
+    padding: 0 0 18px;
+  }
+
+  .pilar.sem-borda {
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+
+  .pilar p {
+    max-width: 210px;
+    font-size: 11px;
+  }
+}
+
+/* =======================================================
+   SOMENTE ÁREA DE VERIFICAÇÃO — HYYH SCRAPBOOK
+   BASEADO NO CÓDIGO DO GEMINI, ADAPTADO AO SEU JS
+======================================================= */
+
+#areaVerificacao {
+  min-height: 100vh;
+  padding: 0;
+  display: none;
+  position: relative;
+  overflow-x: hidden;
+  background: #fdfaf5;
+  color: #4a3e36;
+  font-family: 'Playfair Display', serif;
+}
+
+/* botão voltar */
+
+#areaVerificacao .voltar {
+  position: absolute;
+  top: 26px;
+  left: 26px;
+  z-index: 100;
+
+  border: none;
+  background: rgba(255,255,255,0.8);
+  color: #29435C;
+
+  padding: 9px 16px;
+  border-radius: 999px;
+
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 800;
+  font-size: 12px;
+
+  cursor: pointer;
+  box-shadow: 0 10px 22px rgba(41, 67, 92, 0.10);
+}
+
+/* container geral */
+
+#areaVerificacao .scrapbook-container {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  padding: 20px;
+  box-sizing: border-box;
+  overflow: hidden;
+
+  background:
+    radial-gradient(circle at 18% 82%, rgba(255, 175, 204, 0.23), transparent 28%),
+    radial-gradient(circle at 78% 35%, rgba(162, 210, 255, 0.25), transparent 28%),
+    linear-gradient(135deg, rgba(162, 210, 255, 0.14), transparent 52%),
+    linear-gradient(-135deg, rgba(255, 175, 204, 0.15), transparent 55%),
+    #fdfaf5;
+}
+
+/* textura de papel */
+
+#areaVerificacao .scrapbook-container::before {
+  content: "";
+  position: absolute;
+  inset: 18px;
+  border: 1px solid rgba(75, 68, 54, 0.08);
+  pointer-events: none;
+  z-index: 1;
+}
+
+#areaVerificacao .scrapbook-container::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(41, 67, 92, 0.018) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(41, 67, 92, 0.014) 1px, transparent 1px);
+  background-size: 34px 34px;
+  opacity: 0.18;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* flores / textura */
+
+#areaVerificacao .cherry-blossom {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 2;
+
+  background-image:
+    radial-gradient(rgba(255, 182, 193, 0.42) 2px, transparent 2px),
+    radial-gradient(rgba(255, 182, 193, 0.30) 2px, transparent 2px),
+    radial-gradient(rgba(255, 255, 255, 0.5) 2px, transparent 2px);
+
+  background-size: 70px 70px, 110px 110px, 150px 150px;
+  background-position: 15% 25%, 65% 55%, 85% 75%;
+}
+
+/* borboletas */
+
+#areaVerificacao .butterfly {
+  position: absolute;
+  pointer-events: none;
+  z-index: 8;
+  filter: drop-shadow(0 8px 8px rgba(41, 67, 92, 0.14));
+}
+
+
+#areaVerificacao .butterfly-blue {
+  bottom: 18%;
+  left: 22%;
+  font-size: 54px;
+  transform: rotate(-10deg);
+  opacity: 0.75;
+}
+
+#areaVerificacao .butterfly-pink {
+  top: 36%;
+  right: 16%;
+  font-size: 42px;
+  transform: rotate(10deg);
+  opacity: 0.65;
+}
+
+#areaVerificacao .butterfly-train {
+  bottom: 12%;
+  right: 11%;
+  font-size: 30px;
+  opacity: 0.55;
+}
+
+/* topo */
+
+#areaVerificacao .header-section {
+  position: relative;
+  z-index: 5;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+
+  width: min(1420px, 100%);
+  min-height: 245px;
+
+  margin: 0 auto;
+  padding: 12px 28px 0;
+  box-sizing: border-box;
+}
+
+/* polaroid esquerda */
+
+#areaVerificacao .pin-polaroid-group {
+  position: relative;
+  width: 260px;
+  transform: rotate(-5deg);
+  margin-left: -35px; /* afasta mais para a esquerda */
+}
+
+#areaVerificacao .push-pin {
+  position: absolute;
+  top: -13px;
+  left: 50%;
+  transform: translateX(-50%);
+
+  width: 22px;
+  height: 22px;
+
+  background: radial-gradient(circle at 35% 30%, #fff5cb, #b9873d 70%);
+  border-radius: 50%;
+  box-shadow: 0 5px 10px rgba(55, 45, 30, 0.25);
+  z-index: 10;
+}
+
+#areaVerificacao .bts-polaroid {
+  background: #fffdf8;
+  border: 1px solid rgba(70, 54, 40, 0.10);
+  padding: 12px 12px 44px;
+  width: 250px;
+  box-shadow: 0 22px 44px rgba(41, 67, 92, 0.20);
   text-align: center;
 }
 
-.scrapbook-butterflies { text-align: center; color: #3b5c7d; opacity: 0.6; }
-.scrapbook-butterflies .b2 { transform: translate(25px, -15px) scale(0.7) rotate(20deg); }
-
-/* O TEXTO MANUSCRITO NO MEIOOO */
-.centralized-middle-phrase {
-    color: #2c4a6f;
-    font-size: 15px;
-    line-height: 1.8;
-    margin: 20px 0; /* Espaçamento vertical */
-    width: 100%;
+#areaVerificacao .bts-polaroid img {
+  width: 100%;
+  height: 185px;
+  object-fit: cover;
+  filter: sepia(0.10) saturate(0.95);
 }
 
-.carimbo-round { border: 1px solid rgba(74, 103, 133, 0.4); color: rgba(74, 103, 133, 0.5); width: 90px; height: 90px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 11px; line-height: 1.2; transform: rotate(15deg) translate(80px, -40px); }
+#areaVerificacao .bts-polaroid p,
+#areaVerificacao .spring-polaroid p,
+#areaVerificacao .sea-polaroid p {
+  font-family: 'Noto Sans KR', sans-serif;
+  color: #202e40;
+}
 
-.right-polaroid { transform: rotate(5deg) translateY(-20px); }
+#areaVerificacao .bts-polaroid p {
+  margin-top: 12px;
+  font-size: 17px;
+}
 
-/* TELAS INTERNAS (MANTIDO SEU PADRÃO COM EFEITO PREMIUM TRANSLÚCIDO) */
-.verificacao, .projetos, .negado { display: none; padding: 50px; border-radius: 0 0 24px 24px; background: rgba(255, 255, 255, 0.65); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.8); border-radius: 24px; box-shadow: 0 10px 40px rgba(43, 70, 97, 0.08); }
-.voltar, .sair { background: none; border: none; color: #2f6c9e; font-weight: bold; cursor: pointer; margin-bottom: 25px; }
-.topo-verificacao { text-align: center; }
-.icone { font-size: 38px; }
-.topo-verificacao h2, .projetos h2, .negado h2 { font-family: 'Playfair Display', serif; font-size: 42px; color: #2f6c9e; font-weight: 400; text-align: center; }
-#statusVerificacao, .descricao, .restrito, .negado p { text-align: center; color: #25597f; margin-top: 12px; }
-.timer { width: 105px; height: 105px; margin: 28px auto; border-radius: 50%; border: 3px solid #2f6c9e; display: flex; align-items: center; justify-content: center; flex-direction: column; }
-.grid-perguntas, .cards-projetos { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; margin-top: 35px; }
-.pergunta-card, .card-projeto { background: #fffaf3; padding: 28px; border-radius: 24px; }
-.opcao { display: block; padding: 13px; margin-top: 10px; border-radius: 14px; background: #e1f0fb; color: #25597f; }
-.confirmar, .negado button { display: block; margin: 35px auto 15px; padding: 15px 45px; border: none; border-radius: 999px; background: #2f6c9e; color: white; font-weight: bold; }
+/* foto pequena esquerda */
+
+#areaVerificacao .spring-polaroid {
+  position: absolute;
+  top: 235px;
+  left: -70px; /* afasta mais para a esquerda */
+
+  background: #fffdf8;
+  padding: 8px 8px 26px;
+  width: 170px;
+
+  box-shadow: 0 16px 28px rgba(41, 67, 92, 0.14);
+  transform: rotate(-7deg);
+}
+
+#areaVerificacao .spring-polaroid img {
+  width: 100%;
+  height: 105px;
+  object-fit: cover;
+}
+
+#areaVerificacao .spring-polaroid p {
+  font-size: 12px;
+  margin-top: 8px;
+}
+
+/* título e timer */
+
+#areaVerificacao .title-timer-group {
+  position: absolute;
+  top: 58px;
+  left: 50%;
+  transform: translateX(-50%);
+
+  width: min(740px, 52vw);
+  text-align: center;
+  z-index: 7;
+}
+
+#areaVerificacao .main-title-section {
+  display: inline-block;
+  padding: 10px 24px;
+}
+
+#areaVerificacao .main-title-section h1 {
+  margin: 0 0 12px;
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size: clamp(34px, 4vw, 58px);
+  line-height: 1.12;
+  letter-spacing: -0.04em;
+  color: #243449;
+}
+
+#areaVerificacao .main-title-section p {
+  margin: 0;
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(21px, 2vw, 30px);
+  color: rgba(40, 46, 53, 0.82);
+}
+
+#areaVerificacao .timer-section {
+  margin-top: 20px;
+}
+
+#areaVerificacao .timer-tape {
+  position: relative;
+  display: inline-block;
+  min-width: 320px;
+
+  padding: 14px 34px;
+
+  background:
+    linear-gradient(135deg, rgba(235, 215, 179, 0.76), rgba(252, 244, 224, 0.98));
+
+  box-shadow: 0 12px 24px rgba(41, 67, 92, 0.10);
+  transform: rotate(-0.8deg);
+
+  font-family: 'Playfair Display', serif;
+  font-size: 26px;
+  color: #2c3542;
+}
+
+#areaVerificacao .timer-tape::before,
+#areaVerificacao .timer-tape::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+
+  width: 78px;
+  height: 26px;
+
+  background: rgba(206, 190, 160, 0.42);
+  box-shadow: 0 4px 10px rgba(41, 67, 92, 0.07);
+}
+
+#areaVerificacao .timer-tape::before {
+  left: -50px;
+  transform: translateY(-50%) rotate(-13deg);
+}
+
+#areaVerificacao .timer-tape::after {
+  right: -50px;
+  transform: translateY(-50%) rotate(13deg);
+}
+
+/* medalhão */
+
+#areaVerificacao .medallion-butterfly-group {
+  position: relative;
+  width: 230px;
+  z-index: 7;
+}
+
+#areaVerificacao .medallion-section {
+  text-align: center;
+}
+
+#areaVerificacao .medallion {
+  width: 112px;
+  height: 112px;
+
+  margin: 0 auto;
+
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 34% 25%, #f1dfbd 0%, #8a6b44 34%, #2d251c 76%);
+
+  border: 5px double rgba(240, 221, 184, 0.82);
+
+  color: #f6e5c4;
+  box-shadow:
+    0 14px 26px rgba(35, 27, 19, 0.26),
+    inset 0 0 12px rgba(255,255,255,0.25);
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  font-family: 'Playfair Display', serif;
+  font-size: 22px;
+  line-height: 0.95;
+}
+
+#areaVerificacao .medallion p {
+  margin: 0;
+}
+
+#areaVerificacao .medallion p:last-child {
+  margin-top: 6px;
+  font-size: 10px;
+  letter-spacing: 0.15em;
+}
+
+#areaVerificacao .medallion-butterfly-group h2 {
+  margin-top: 15px;
+  font-family: 'Playfair Display', serif;
+  font-size: 24px;
+  letter-spacing: 0.06em;
+  font-weight: 400;
+  color: rgba(41, 44, 47, 0.62);
+}
+
+#areaVerificacao .sea-polaroid {
+  position: absolute;
+  top: 220px;
+  right: -55px; /* afasta mais para a direita */
+
+  background: #fffdf8;
+  padding: 8px 8px 26px;
+  width: 160px;
+
+  box-shadow: 0 16px 28px rgba(41, 67, 92, 0.14);
+  transform: rotate(6deg);
+}
+
+#areaVerificacao .sea-polaroid img {
+  width: 100%;
+  height: 100px;
+  object-fit: cover;
+}
+
+#areaVerificacao .sea-polaroid p {
+  margin-top: 8px;
+  font-size: 12px;
+}
+
+/* perguntas */
+
+#areaVerificacao .questions-grid {
+  position: relative;
+  z-index: 6;
+
+  max-width: 940px;
+  margin: 95px auto 44px;
+  padding: 0 20px;
+}
+
+/* o form vira o grid real */
+#areaVerificacao #formPerguntas.grid-perguntas {
+  display: grid !important;
+  grid-template-columns: 1fr 1fr !important;
+  gap: 50px !important;
+
+  width: 100% !important;
+  max-width: 940px !important;
+
+  margin: 0 auto !important;
+  padding: 0 !important;
+
+  background: transparent !important;
+  box-shadow: none !important;
+  transform: none !important;
+  text-align: left;
+}
+
+/* cada pergunta do JS vira o papel */
+#areaVerificacao .pergunta-card {
+  position: relative;
+
+  background:
+    linear-gradient(rgba(255,255,255,0.35), rgba(255,255,255,0.20)),
+    #fcf3df;
+
+  padding: 34px 42px;
+  min-height: 245px;
+
+  box-shadow:
+    0 18px 30px rgba(45, 55, 70, 0.15),
+    inset 0 0 24px rgba(255,255,255,0.20);
+
+  border: 1px solid rgba(94, 76, 50, 0.10);
+  border-radius: 3px;
+
+  font-family: 'Playfair Display', serif;
+}
+
+#areaVerificacao .pergunta-card:nth-child(odd) {
+  transform: rotate(-1.2deg);
+}
+
+#areaVerificacao .pergunta-card:nth-child(even) {
+  transform: rotate(1.1deg);
+}
+
+#areaVerificacao .pergunta-card::before {
+  content: "";
+  position: absolute;
+  top: -15px;
+  left: 50%;
+  transform: translateX(-50%) rotate(-2deg);
+
+  width: 120px;
+  height: 30px;
+
+  background: rgba(220, 210, 190, 0.62);
+  box-shadow: 0 2px 7px rgba(0,0,0,0.06);
+}
+
+#areaVerificacao .pergunta-card::after {
+  content: "❀";
+  position: absolute;
+  right: 18px;
+  bottom: 14px;
+
+  font-size: 32px;
+  color: rgba(212, 134, 125, 0.45);
+}
+
+#areaVerificacao .pergunta-card h3 {
+  display: none;
+}
+
+#areaVerificacao .pergunta-card p {
+  margin: 0 0 22px;
+
+  font-family: 'Playfair Display', serif;
+  font-size: 24px;
+  line-height: 1.25;
+  text-align: center;
+  color: #161d26;
+}
+
+#areaVerificacao .opcao {
+  display: flex !important;
+  align-items: center !important;
+
+  margin: 12px 0 !important;
+
+  font-family: 'Playfair Display', serif;
+  font-size: 21px;
+  line-height: 1.2;
+
+  color: #20262d;
+  cursor: pointer;
+
+  transition: 0.2s ease;
+}
+
+#areaVerificacao .opcao:hover {
+  transform: translateX(7px);
+  color: #4A5D73;
+}
+
+#areaVerificacao .opcao input[type="radio"] {
+  margin-right: 12px;
+  accent-color: #29435C;
+  transform: scale(1.1);
+}
+
+/* baixo */
+
+#areaVerificacao .lower-section {
+  position: relative;
+  z-index: 5;
+
+  max-width: 940px;
+  margin: 0 auto 18px;
+  padding: 0 20px;
+}
+
+#areaVerificacao .poem-note {
+  background: rgba(252, 252, 252, 0.78);
+  padding: 24px 38px;
+
+  box-shadow: 0 14px 24px rgba(41, 67, 92, 0.10);
+
+  border-radius: 2px;
+  max-width: 580px;
+  margin: 0 auto;
+  text-align: center;
+  transform: rotate(-0.5deg);
+  position: relative;
+}
+
+#areaVerificacao .washi-tape-bottom {
+  position: absolute;
+  bottom: -13px;
+  left: 50%;
+  transform: translateX(-50%) rotate(2deg);
+
+  width: 105px;
+  height: 26px;
+
+  background: rgba(206, 190, 160, 0.40);
+}
+
+#areaVerificacao .poem-note p {
+  margin: 0;
+
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size: 15px;
+  line-height: 1.65;
+
+  color: #4a3e36;
+}
+
+
+/* IMAGEM DECORATIVA NO LUGAR DO TREM */
+
+#areaVerificacao .train-landscape-group {
+  position: absolute;
+  bottom: -10px;
+  right: 20px;
+  z-index: 4;
+  transform: rotate(2deg);
+}
+
+#areaVerificacao .train-illustration-img {
+  width: 280px;
+  height: auto;
+  display: block;
+
+  opacity: 0.82;
+  border-radius: 4px;
+
+  box-shadow: 0 14px 24px rgba(41, 67, 92, 0.12);
+}
+
+
+/* botão confirmar */
+
+#areaVerificacao .btn-confirmar {
+  position: relative;
+  z-index: 7;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  margin: 24px auto 0;
+
+  min-width: 230px;
+  height: 50px;
+
+  border: none;
+  border-radius: 999px;
+
+  background: #29435C;
+  color: #fff;
+
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+
+  cursor: pointer;
+  box-shadow: 0 14px 28px rgba(41, 67, 92, 0.22);
+}
+
+#areaVerificacao .btn-confirmar:hover {
+  transform: translateY(-2px);
+  background: #1e3449;
+}
+
+/* footer */
+
+#areaVerificacao .footer {
+  position: relative;
+  z-index: 5;
+
+  margin-top: 22px;
+  text-align: center;
+
+  font-family: 'Playfair Display', serif;
+  font-size: 13px;
+  color: rgba(41, 67, 92, 0.55);
+}
+
+/* responsivo */
+
+@media (max-width: 900px) {
+  #areaVerificacao .scrapbook-container {
+    padding: 22px 16px 60px;
+  }
+
+  #areaVerificacao .header-section {
+    display: block;
+    min-height: auto;
+    padding: 70px 0 0;
+  }
+
+  #areaVerificacao .pin-polaroid-group,
+  #areaVerificacao .medallion-butterfly-group,
+  #areaVerificacao .spring-polaroid,
+  #areaVerificacao .sea-polaroid, {
+    display: none;
+  }
+
+  #areaVerificacao .title-timer-group {
+    position: relative;
+    top: auto;
+    left: auto;
+    transform: none;
+
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  #areaVerificacao .main-title-section h1 {
+    font-size: 32px;
+  }
+
+  #areaVerificacao .main-title-section p {
+    font-size: 20px;
+  }
+
+  #areaVerificacao .timer-tape {
+    min-width: 230px;
+    font-size: 20px;
+  }
+
+  #areaVerificacao .questions-grid {
+    margin: 48px auto 34px;
+    padding: 0;
+  }
+
+  #areaVerificacao #formPerguntas.grid-perguntas {
+    grid-template-columns: 1fr !important;
+    gap: 34px !important;
+  }
+
+  #areaVerificacao .pergunta-card:nth-child(odd),
+  #areaVerificacao .pergunta-card:nth-child(even) {
+    transform: rotate(0deg);
+  }
+
+  #areaVerificacao .pergunta-card {
+    padding: 30px 24px;
+  }
+
+  #areaVerificacao .pergunta-card p {
+    font-size: 21px;
+  }
+
+  #areaVerificacao .opcao {
+    font-size: 18px;
+  }
+
+  #areaVerificacao .poem-note {
+    padding: 20px 24px;
+  }
+
+  #areaVerificacao .poem-note p {
+    font-size: 13px;
+  }
+}
+/*QUALQUER COISA APAGA ESSA PARTE, LEMBRA DISSO*/
+/* AJUSTE FINO DOS POLAROIDS DA VERIFICAÇÃO */
+
+/* polaroid grande da esquerda: mais para a direita */
+#areaVerificacao .pin-polaroid-group,
+#areaVerificacao .polaroid1,
+#areaVerificacao .polaroid2 {
+  margin-left: 35px;
+}
+
+/* polaroid pequena da esquerda: mais para baixo e para a direita */
+#areaVerificacao .spring-polaroid {
+  top: 280px;
+  left: 35px;
+}
+
+/* se o polaroid pequeno estiver usando outro nome no seu código */
+#areaVerificacao .polaroid-pequena,
+#areaVerificacao .polaroid-small {
+  top: 280px;
+  left: 35px;
+}
+/* diminuir frase coreana central */
+#areaVerificacao .main-title-section h1,
+#areaVerificacao .titulo-verificacao h2,
+#areaVerificacao .title-timer-group h1 {
+  font-size: clamp(28px, 3.2vw, 46px);
+}
+
+/* BORBOLETAS PERSONALIZADAS DA VERIFICAÇÃO */
+
+#areaVerificacao .borboleta {
+  position: absolute;
+  pointer-events: none;
+  z-index: 20;
+
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+
+  filter: drop-shadow(0 8px 8px rgba(41, 67, 92, 0.14));
+}
+
+#areaVerificacao .borboleta1 {
+  width: 82px;
+  height: 82px;
+
+  left: 22%;
+  bottom: 18%;
+
+  background-image: url("borboleta1.png");
+
+  transform: rotate(-12deg);
+  opacity: 0.95;
+}
+
+#areaVerificacao .borboleta3 {
+  width: 88px;
+  height: 88px;
+
+  right: 17%;
+  top: 32%;
+
+  background-image: url("borboleta3.png");
+
+  transform: rotate(10deg);
+  opacity: 0.95;
+}
+
+/* BORBOLETAS PERSONALIZADAS DA TELA INICIAL */
+
+.hero-section .borboleta {
+  position: absolute;
+  pointer-events: none;
+  z-index: 15;
+
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+
+  filter: drop-shadow(0 8px 8px rgba(41, 67, 92, 0.18));
+}
+
+/* borboleta 1 na tela inicial */
+.hero-section .borboleta1 {
+  width: 76px;
+  height: 76px;
+
+  right: 47%;
+  bottom: 13%;
+
+  background-image: url("borboleta1.png");
+
+  transform: rotate(18deg);
+  opacity: 0.95;
+}
+
+/* borboleta 3 na tela inicial */
+.hero-section .borboleta3 {
+  width: 70px;
+  height: 70px;
+
+  left: 12%;
+  top: 20%;
+
+  background-image: url("borboleta3.png");
+
+  transform: rotate(-14deg);
+  opacity: 0.95;
+}
+
+/* IMAGENS DE PÉTALAS NA TELA INICIAL */
+
+.hero-section .petalas-topo,
+.hero-section .petalas-baixo {
+  position: absolute;
+  pointer-events: none;
+  z-index: 26;
+  height: auto;
+  display: block;
+  opacity: 0.9;
+}
+
+/* pétalas na lateral superior */
+.hero-section .petalastopo {
+  top: 0;
+  left: -35px;
+  width: 300px;
+  opacity: 0.65;
+}
+
+/* PETALAS BAIXO*/
+.hero-section .petalasbaixo {
+  bottom: -20px;     /* desce para perto do papel rasgado */
+  right: -80px;      /* joga bem para a direita */
+  width: 350px;      /* diminui para não invadir o centro */
+  opacity: 0.70;
+  z-index: 8;        /* fica atrás do texto */
+}
+
+#areaVerificacao .train-landscape-group {
+  display: block !important;
+  position: absolute;
+  bottom: -10px;
+  right: 20px;
+  z-index: 4;
+  transform: rotate(2deg);
+}
+
+#areaVerificacao .train-illustration-img {
+  width: 280px;
+  height: auto;
+  display: block !important;
+  opacity: 0.95;
+  border-radius: 4px;
+  box-shadow: 0 14px 24px rgba(41, 67, 92, 0.12);
+}
+
+/* =======================================================
+   CORREÇÃO MOBILE — HERO / TELA INICIAL
+   cola no FINAL do CSS
+======================================================= */
+
+@media (max-width: 760px) {
+
+  body {
+    overflow-x: hidden;
+  }
+
+  .hero-section {
+    width: 100%;
+    min-height: 620px;
+    padding: 0 20px;
+    overflow: hidden;
+
+    background-position: center bottom;
+    align-items: flex-start;
+    justify-content: center;
+  }
+
+  .menu {
+    position: relative;
+    width: 100%;
+    padding: 28px 8px 0;
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 18px;
+  }
+
+  .logo {
+    font-size: 15px;
+    font-weight: 800;
+  }
+
+  .menu nav {
+    display: flex;
+    gap: 26px;
+    width: 100%;
+  }
+
+  .menu nav a {
+    font-size: 16px;
+  }
+
+  .icons {
+    display: none;
+  }
+
+  .hero-centro {
+    width: 100%;
+    max-width: 360px;
+
+    margin: 115px auto 0;
+    padding: 0;
+
+    text-align: center;
+  }
+
+  .mini-tag {
+    font-size: 10px;
+    letter-spacing: 0.28em;
+    margin-bottom: 18px;
+  }
+
+  .hero-centro h1 {
+    font-size: 46px;
+    line-height: 0.94;
+    letter-spacing: -0.055em;
+
+    max-width: 100%;
+    margin: 0 auto;
+
+    word-break: normal;
+  }
+
+  .hero-centro p {
+    max-width: 300px;
+    margin: 20px auto 0;
+
+    font-size: 13px;
+    line-height: 1.55;
+  }
+
+  .btn-dark {
+    min-width: 190px;
+    height: 46px;
+    margin-top: 26px;
+
+    font-size: 13px;
+  }
+
+  .selo-hyyh {
+    display: none;
+  }
+
+  .texto-coreano {
+    left: 8%;
+    top: 46%;
+    font-size: 10px;
+    opacity: 0.42;
+  }
+
+  .assinatura {
+    display: none;
+  }
+
+  .hero-section .borboleta1 {
+    width: 64px;
+    height: 64px;
+    left: 18%;
+    top: 28%;
+  }
+
+  .hero-section .borboleta3 {
+    width: 60px;
+    height: 60px;
+    right: 17%;
+    bottom: 18%;
+  }
+
+  .hero-section .petalastopo {
+    top: 0;
+    left: -45px;
+    width: 250px;
+    opacity: 0.45;
+    z-index: 6;
+  }
+
+  .hero-section .petalasbaixo {
+    bottom: -45px;
+    right: -120px;
+    width: 240px;
+    opacity: 0.5;
+    z-index: 6;
+  }
+
+  .papel-rasgado {
+    height: 58px;
+  }
+}
