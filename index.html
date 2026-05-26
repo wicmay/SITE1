@@ -253,7 +253,7 @@
         </p>
       </div>
 
-      <button type="button" class="btn-projetos-secundario">
+      <button type="button" class="btn-projetos-secundario" onclick="abrirVotacaoProjetos()">
         ver projetos em andamento →
       </button>
     </aside>
@@ -356,6 +356,16 @@ placeholder="Cole aqui o link do Google Docs, Drive ou Canva">
 Google Docs • Drive • Canva • PDF online
 </small>
 
+<label>
+Imagem do projeto (opcional)
+
+<input
+id="imagemProjeto"
+type="url"
+placeholder="Cole o link de uma imagem do projeto">
+
+</label>
+
 </div>
 
 </label>
@@ -402,6 +412,77 @@ onclick="enviarProjeto()">
       </article>
     </div>
   </section>
+
+</section>
+
+<section id="areaVotacaoProjetos" class="area-votacao" style="display: none;">
+
+  <header class="votacao-nav">
+    <div class="votacao-logo">
+      <strong>BARMYFORCE</strong>
+      <span>por e para ARMY</span>
+    </div>
+
+    <button onclick="voltarAreaProjetos()" type="button" class="btn-voltar-votacao">
+      ← voltar
+    </button>
+  </header>
+
+  <section class="votacao-hero">
+    <h1>Votação de <span>Projetos</span></h1>
+    <p>Conheça os projetos enviados pela comunidade e vote naqueles que mais te inspiram.</p>
+
+    <div class="votacao-info">
+      <div>♡</div>
+      <p>Cada voto faz a diferença.<br>Você pode votar em até 3 projetos.</p>
+    </div>
+  </section>
+
+  <section class="votacao-controles">
+    <select id="filtroProjetos" onchange="carregarProjetosVotacao()">
+      <option value="recentes">Mais recentes</option>
+      <option value="votados">Mais votados</option>
+    </select>
+
+    <input id="buscaProjetos" type="text" placeholder="Buscar projetos..." oninput="carregarProjetosVotacao()">
+  </section>
+
+  <main id="listaProjetosVotacao" class="lista-votacao"></main>
+
+  <div class="aviso-votacao">
+    A votação termina em data definida pela BARMYFORCE. Os projetos mais votados poderão receber apoio da equipe.
+  </div>
+
+</section>
+
+<section id="projetoEnviado" class="projeto-enviado" style="display: none;">
+
+  <div class="confirmacao-card">
+    <div class="fita-confirmacao"></div>
+
+    <div class="check-confirmacao">✓</div>
+
+    <h1>Seu projeto foi <span>enviado!</span></h1>
+
+    <div class="linha-confirmacao">
+      <span></span>
+      <strong>♡</strong>
+      <span></span>
+    </div>
+
+    <p>
+      Obrigada por contribuir com a BARMYFORCE.<br>
+      Seu projeto foi recebido com sucesso e agora está em análise pela nossa equipe.
+    </p>
+
+    <p class="mensagem-manuscrita">
+      Juntas, construímos o futuro que sonhamos.
+    </p>
+
+    <button type="button" onclick="sair()" class="btn-voltar-confirmacao">
+      VOLTAR PARA O INÍCIO →
+    </button>
+  </div>
 
 </section>
 <script type="module" src="script.js"></script>

@@ -19,10 +19,15 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 import {
-  getFirestore,
-  collection,
-  addDoc
-} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+getFirestore,
+collection,
+addDoc,
+getDocs,
+doc,
+updateDoc,
+increment
+}
+from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
 const db = getFirestore(app);
 const auth = getAuth(app);
@@ -31,11 +36,15 @@ const provider = new GoogleAuthProvider();
 const perguntas = [
   { pergunta: "Qual foi a data do show do BTS no Brasil em 2019?", opcoes: ["24 e 25 de maio", "10 e 11 de junho", "15 e 16 de abril", "1 e 2 de julho"], resposta: "24 e 25 de maio" },
   { pergunta: "Em qual cidade brasileira o BTS se apresentou em 2019?", opcoes: ["Rio de Janeiro", "São Paulo", "Recife", "Brasília"], resposta: "São Paulo" },
-  { pergunta: "Qual era o nome da turnê do BTS que passou pelo Brasil em 2019?", opcoes: ["Wings Tour", "Love Yourself: Speak Yourself", "Map of The Soul Tour", "Yet To Come"], resposta: "Love Yourself: Speak Yourself" },
+  { pergunta: "Apelido do tae no Brasil em 2019?", opcoes: ["taetae", "Mrs lindo", "tigrinho", "V"], resposta: "Mrs lindo" },
   { pergunta: "Qual membro lançou o álbum Layover?", opcoes: ["Taehyung", "Jungkook", "Jimin", "Namjoon"], resposta: "Taehyung" },
-  { pergunta: "Qual música costuma aparecer em projetos emocionais?", opcoes: ["Mikrokosmos", "Butter", "Dynamite", "Idol"], resposta: "Mikrokosmos" },
-  { pergunta: "Qual fandom usa o termo ARMY BR?", opcoes: ["Fãs brasileiros do BTS", "Fãs americanos", "Fãs japoneses", "Fãs coreanos"], resposta: "Fãs brasileiros do BTS" }
+  { pergunta: "Qual o apelido do yoongi no brasil?", opcoes: ["Guinho", "Suga", "Gatinho", "Lil Meow Meow"], resposta: "Guinho" },
+  { pergunta: "Qual foi o maior projeto de streaming feito no fandom b-army?", opcoes: ["Churrasco da WF", "Farmando stream", "A fantástica fabrica de stream", "barmystream"], resposta: "A fantástica fabrica de stream" },
+  { pergunta: "Qual meme o jungkook falou no show em 2019?", opcoes: ["Juntos e shalow now", "Farmando aura", "sixseven", "jamal"], resposta: "Juntos e shalow now" },
+{ pergunta: "Em 2019, no final do discurso do jhope, ele falou...?", opcoes: ["j-hopobrigado", "fui feliz", "vocês mexeram com meu coração", "Brasil"], resposta: "j-hopobrigado" },
 ];
+
+
 
 let perguntasSorteadas = [];
 let tempo = 30;
@@ -242,11 +251,19 @@ document.getElementById("impactoProjeto").value,
 documento:
 document.getElementById("documentoProjeto").value,
 
+imagem:
+document.getElementById("imagemProjeto").value,
+
+votos:0,
+status:"em votação",
+categoria:"geral",
+
 data:new Date()
 
 });
 
-alert("Projeto enviado para análise 💜");
+document.getElementById("areaProjetos").style.display = "none";
+document.getElementById("projetoEnviado").style.display = "flex";
 
 }
 catch(erro){
@@ -258,3 +275,133 @@ alert("Erro ao enviar projeto");
 }
 
 }
+
+/* AREA DE VOTAÇÃO */
+
+window.abrirVotacaoProjetos = function () {
+  document.getElementById("areaProjetos").style.display = "none";
+  document.getElementById("areaVotacaoProjetos").style.display = "block";
+  carregarProjetosVotacao();
+};
+
+window.voltarAreaProjetos = function () {
+  document.getElementById("areaVotacaoProjetos").style.display = "none";
+  document.getElementById("areaProjetos").style.display = "block";
+};
+
+window.carregarProjetosVotacao = async function () {
+  const lista = document.getElementById("listaProjetosVotacao");
+  const busca = document.getElementById("buscaProjetos")?.value.toLowerCase() || "";
+  const filtro = document.getElementById("filtroProjetos")?.value || "recentes";
+
+  lista.innerHTML = "Carregando projetos...";
+
+  const querySnapshot = await getDocs(collection(db, "projetos"));
+
+  let projetos = [];
+
+  querySnapshot.forEach((docItem) => {
+    projetos.push({
+      id: docItem.id,
+      ...docItem.data()
+    });
+  });
+
+  projetos = projetos.filter((projeto) => {
+    return (
+      projeto.status === "em votação" &&
+      (
+        projeto.nome?.toLowerCase().includes(busca) ||
+        projeto.objetivo?.toLowerCase().includes(busca) ||
+        projeto.responsavel?.toLowerCase().includes(busca)
+      )
+    );
+  });
+
+  if (filtro === "votados") {
+    projetos.sort((a, b) => (b.votos || 0) - (a.votos || 0));
+  }
+
+  const totalVotos = projetos.reduce((total, projeto) => total + (projeto.votos || 0), 0);
+
+  if (projetos.length === 0) {
+    lista.innerHTML = "<p>Nenhum projeto em votação ainda.</p>";
+    return;
+  }
+
+  lista.innerHTML = projetos.map((projeto) => {
+    const votos = projeto.votos || 0;
+    const porcentagem = totalVotos > 0 ? Math.round((votos / totalVotos) * 100) : 0;
+
+    return `
+      <article class="card-votacao">
+        <div class="card-votacao-img">
+
+${projeto.imagem
+
+? `<img src="${projeto.imagem}" alt="${projeto.nome}">`
+
+: `<span>♡</span>`
+
+}
+
+</div>
+
+        <div class="card-votacao-conteudo">
+          <small>${projeto.categoria || "projeto"}</small>
+
+          <h2>${projeto.nome || "Projeto sem nome"}</h2>
+
+          <p>${projeto.objetivo || "Sem descrição."}</p>
+
+          <p>por <strong>${projeto.responsavel || "ARMY"}</strong></p>
+
+          ${
+            projeto.documento
+              ? `<a href="${projeto.documento}" target="_blank">Ver documento ↗</a>`
+              : ""
+          }
+
+          <div class="voto-linha">
+            <button class="btn-votar" onclick="votarProjeto('${projeto.id}')">
+              ♡ VOTAR
+            </button>
+
+            <div class="porcentagem">${porcentagem}%</div>
+          </div>
+
+          <small>${votos} votos</small>
+
+          <div class="barra-voto">
+            <span style="width:${porcentagem}%"></span>
+          </div>
+        </div>
+      </article>
+    `;
+  }).join("");
+};
+
+window.votarProjeto = async function (idProjeto) {
+  const votosFeitos = JSON.parse(localStorage.getItem("votosProjetos") || "[]");
+
+  if (votosFeitos.includes(idProjeto)) {
+    alert("Você já votou nesse projeto.");
+    return;
+  }
+
+  if (votosFeitos.length >= 3) {
+    alert("Você já votou em 3 projetos.");
+    return;
+  }
+
+  const projetoRef = doc(db, "projetos", idProjeto);
+
+  await updateDoc(projetoRef, {
+    votos: increment(1)
+  });
+
+  votosFeitos.push(idProjeto);
+  localStorage.setItem("votosProjetos", JSON.stringify(votosFeitos));
+
+  carregarProjetosVotacao();
+};

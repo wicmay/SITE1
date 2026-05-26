@@ -2815,3 +2815,427 @@ font-size:35px;
 opacity:.7;
 
 }
+
+
+
+/* TELA DE CONFIRMAÇÃO DO PROJETO */
+
+#projetoEnviado {
+  min-height: 100vh;
+  padding: 90px 24px;
+
+  display: none;
+  align-items: center;
+  justify-content: center;
+
+  background:
+    radial-gradient(circle at 18% 80%, rgba(196, 170, 220, .25), transparent 28%),
+    radial-gradient(circle at 82% 20%, rgba(220, 210, 235, .25), transparent 26%),
+    linear-gradient(180deg, #fbf7ef, #f7f3ec);
+
+  color: #29435C;
+}
+
+.confirmacao-card {
+  position: relative;
+  width: min(620px, 100%);
+  padding: 70px 48px 58px;
+
+  background: rgba(255, 255, 255, .78);
+  border: 1px solid rgba(41, 67, 92, .08);
+
+  text-align: center;
+
+  box-shadow:
+    0 28px 70px rgba(41, 67, 92, .14),
+    inset 0 1px 0 rgba(255,255,255,.8);
+}
+
+.fita-confirmacao {
+  position: absolute;
+  top: -18px;
+  left: 50%;
+
+  width: 140px;
+  height: 36px;
+
+  transform: translateX(-50%) rotate(1deg);
+
+  background: rgba(216, 203, 178, .72);
+  box-shadow: 0 6px 14px rgba(41, 67, 92, .08);
+}
+
+.check-confirmacao {
+  width: 92px;
+  height: 92px;
+  margin: 0 auto 34px;
+
+  border: 3px solid rgba(160, 136, 194, .65);
+  border-radius: 50%;
+
+  display: grid;
+  place-items: center;
+
+  font-size: 50px;
+  color: #a088c2;
+}
+
+.confirmacao-card h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(34px, 5vw, 54px);
+  font-weight: 400;
+  letter-spacing: -0.04em;
+}
+
+.confirmacao-card h1 span {
+  color: #a088c2;
+}
+
+.linha-confirmacao {
+  margin: 24px auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+}
+
+.linha-confirmacao span {
+  width: 90px;
+  height: 1px;
+  background: rgba(160, 136, 194, .45);
+}
+
+.linha-confirmacao strong {
+  color: #a088c2;
+  font-size: 24px;
+}
+
+.confirmacao-card p {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 15px;
+  line-height: 1.8;
+  color: rgba(41, 67, 92, .78);
+}
+
+.mensagem-manuscrita {
+  margin-top: 30px;
+  font-family: 'Noto Sans KR', sans-serif;
+  color: #a088c2 !important;
+  font-size: 14px !important;
+}
+
+.btn-voltar-confirmacao {
+  margin-top: 36px;
+  padding: 16px 42px;
+
+  border: 1px solid rgba(160, 136, 194, .75);
+  background: transparent;
+  color: #8f76b4;
+
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 800;
+  letter-spacing: .08em;
+
+  cursor: pointer;
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+  #projetoEnviado {
+    padding: 70px 18px;
+  }
+
+  .confirmacao-card {
+    padding: 58px 26px 46px;
+  }
+
+  .check-confirmacao {
+    width: 76px;
+    height: 76px;
+    font-size: 42px;
+  }
+
+  .linha-confirmacao span {
+    width: 58px;
+  }
+
+  .btn-voltar-confirmacao {
+    width: 100%;
+    padding: 15px 20px;
+  }
+}
+
+/*AREA DE VOTAÇÃO*/
+
+/* ÁREA DE VOTAÇÃO DE PROJETOS */
+
+.area-votacao {
+  min-height: 100vh;
+  padding: 30px 46px 70px;
+  background: linear-gradient(180deg, #fbf7ef, #f7f3ec);
+  color: #29435C;
+}
+
+.votacao-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.votacao-logo strong {
+  display: block;
+  font-family: 'Playfair Display', serif;
+  font-size: 27px;
+}
+
+.votacao-logo span {
+  font-size: 11px;
+}
+
+.btn-voltar-votacao {
+  border: 1px solid rgba(160,136,194,.5);
+  background: white;
+  color: #8f76b4;
+  padding: 10px 18px;
+  border-radius: 999px;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.votacao-hero {
+  text-align: center;
+  max-width: 760px;
+  margin: 70px auto 40px;
+}
+
+.votacao-hero h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(42px, 5vw, 68px);
+  font-weight: 400;
+}
+
+.votacao-hero h1 span {
+  color: #a088c2;
+}
+
+.votacao-hero p {
+  margin-top: 18px;
+  font-size: 16px;
+  line-height: 1.7;
+}
+
+.votacao-info {
+  margin: 34px auto 0;
+  max-width: 620px;
+  padding: 22px 30px;
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  background: rgba(224, 210, 238, .5);
+  border: 1px solid rgba(160,136,194,.18);
+  border-radius: 14px;
+  text-align: left;
+}
+
+.votacao-info div {
+  font-size: 38px;
+  color: #a088c2;
+}
+
+.votacao-controles {
+  max-width: 1180px;
+  margin: 0 auto 28px;
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.votacao-controles select,
+.votacao-controles input {
+  border: 1px solid rgba(41,67,92,.16);
+  border-radius: 10px;
+  background: rgba(255,255,255,.75);
+  padding: 14px 16px;
+  color: #29435C;
+  font-family: inherit;
+}
+
+.votacao-controles input {
+  width: 320px;
+}
+
+.lista-votacao {
+  max-width: 1180px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 26px;
+}
+
+.card-votacao {
+  background: rgba(255,255,255,.78);
+  border: 1px solid rgba(41,67,92,.08);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 16px 38px rgba(41,67,92,.08);
+}
+
+.card-votacao-img {
+
+height:220px;
+
+background:linear-gradient(
+135deg,
+#e8dff1,
+#f7f3ec
+);
+
+overflow:hidden;
+
+position:relative;
+
+}
+
+/* imagem do projeto */
+.card-votacao-img img{
+
+width:100%;
+height:100%;
+
+object-fit:cover;
+
+display:block;
+
+}
+
+/* coração caso não tenha imagem */
+.card-votacao-img span{
+
+position:absolute;
+top:50%;
+left:50%;
+
+transform:translate(-50%,-50%);
+
+font-size:42px;
+color:#29435C;
+
+}
+
+.card-votacao-conteudo {
+  padding: 22px;
+}
+
+.card-votacao small {
+  color: #a088c2;
+  font-weight: 800;
+  text-transform: uppercase;
+  font-size: 10px;
+}
+
+.card-votacao h2 {
+  margin-top: 10px;
+  font-family: 'Playfair Display', serif;
+  font-size: 25px;
+}
+
+.card-votacao p {
+  margin-top: 10px;
+  font-size: 14px;
+  line-height: 1.55;
+}
+
+.card-votacao a {
+  display: inline-block;
+  margin-top: 14px;
+  color: #8f76b4;
+  font-weight: 700;
+  font-size: 13px;
+}
+
+.voto-linha {
+  margin-top: 18px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.btn-votar {
+  flex: 1;
+  height: 42px;
+  border: none;
+  border-radius: 8px;
+  background: #a088c2;
+  color: white;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.porcentagem {
+  min-width: 58px;
+  text-align: right;
+  font-weight: 900;
+  font-size: 20px;
+}
+
+.barra-voto {
+  margin-top: 12px;
+  height: 8px;
+  background: rgba(160,136,194,.18);
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.barra-voto span {
+  display: block;
+  height: 100%;
+  background: #a088c2;
+  width: 0%;
+}
+
+.aviso-votacao {
+  max-width: 760px;
+  margin: 38px auto 0;
+  padding: 22px;
+  text-align: center;
+  background: rgba(224, 210, 238, .45);
+  border-radius: 12px;
+  font-size: 14px;
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+  .area-votacao {
+    padding: 24px 16px 50px;
+  }
+
+  .votacao-hero {
+    margin: 50px auto 30px;
+  }
+
+  .votacao-info {
+    align-items: flex-start;
+    padding: 20px;
+  }
+
+  .votacao-controles {
+    flex-direction: column;
+  }
+
+  .votacao-controles input {
+    width: 100%;
+  }
+
+  .lista-votacao {
+    grid-template-columns: 1fr;
+    gap: 22px;
+  }
+
+  .card-votacao {
+    border-radius: 18px;
+  }
+
+  .card-votacao-img {
+    height: 135px;
+  }
+}
