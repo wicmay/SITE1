@@ -34,7 +34,7 @@ const auth = getAuth(app);
 const provider = new GoogleAuthProvider();
 
 const perguntas = [
-  { pergunta: "Qual foi a data do show do BTS no Brasil em 2019?", opcoes: ["24 e 25 de maio", "10 e 11 de junho", "15 e 16 de abril", "1 e 2 de julho"], resposta: "24 e 25 de maio" },
+  { pergunta: "Qual foi a data do show do BTS no Brasil em 2019?", opcoes: ["25 e 26 de maio", "10 e 11 de junho", "15 e 16 de abril", "1 e 2 de julho"], resposta: "25 e 26 de maio" },
   { pergunta: "Em qual cidade brasileira o BTS se apresentou em 2019?", opcoes: ["Rio de Janeiro", "São Paulo", "Recife", "Brasília"], resposta: "São Paulo" },
   { pergunta: "Apelido do tae no Brasil em 2019?", opcoes: ["taetae", "Mrs lindo", "tigrinho", "V"], resposta: "Mrs lindo" },
   { pergunta: "Qual membro lançou o álbum Layover?", opcoes: ["Taehyung", "Jungkook", "Jimin", "Namjoon"], resposta: "Taehyung" },
@@ -255,6 +255,7 @@ imagem:
 document.getElementById("imagemProjeto").value,
 
 votos:0,
+naoApoios: 0,
 status:"em votação",
 categoria:"geral",
 
@@ -294,6 +295,8 @@ window.carregarProjetosVotacao = async function () {
   const busca = document.getElementById("buscaProjetos")?.value.toLowerCase() || "";
   const filtro = document.getElementById("filtroProjetos")?.value || "recentes";
 
+  const opinioes = JSON.parse(localStorage.getItem("opinioesProjetos") || "{}");
+
   lista.innerHTML = "Carregando projetos...";
 
   const querySnapshot = await getDocs(collection(db, "projetos"));
@@ -306,6 +309,14 @@ window.carregarProjetosVotacao = async function () {
       ...docItem.data()
     });
   });
+
+  const ignorados=
+JSON.parse(
+localStorage.getItem(
+"projetosIgnorados"
+)||"[]"
+);
+
 
   projetos = projetos.filter((projeto) => {
     return (
@@ -330,8 +341,13 @@ window.carregarProjetosVotacao = async function () {
   }
 
   lista.innerHTML = projetos.map((projeto) => {
-    const votos = projeto.votos || 0;
-    const porcentagem = totalVotos > 0 ? Math.round((votos / totalVotos) * 100) : 0;
+     const votos = projeto.votos || 0;
+const naoApoios = projeto.naoApoios || 0;
+const totalOpiniao = votos + naoApoios;
+
+const porcentagem = totalOpiniao > 0
+  ? Math.round((votos / totalOpiniao) * 100)
+  : 0;
 
     return `
       <article class="card-votacao">
@@ -363,14 +379,36 @@ ${projeto.imagem
           }
 
           <div class="voto-linha">
-            <button class="btn-votar" onclick="votarProjeto('${projeto.id}')">
-              ♡ VOTAR
-            </button>
 
-            <div class="porcentagem">${porcentagem}%</div>
-          </div>
+<button
+class="btn-votar ${opinioes[projeto.id] === "apoio" ? "ativo" : ""}"
+onclick="votarProjeto('${projeto.id}')">
 
-          <small>${votos} votos</small>
+${opinioes[projeto.id] === "apoio"
+? "✓ APOIADO"
+: "♡ VOTAR"}
+
+</button>
+
+<button
+class="btn-nao-apoiar ${opinioes[projeto.id] === "naoApoio" ? "ativo" : ""}"
+onclick="naoApoiarProjeto('${projeto.id}')">
+
+${opinioes[projeto.id] === "naoApoio"
+? "✓"
+: "✕"}
+
+</button>
+
+<div class="porcentagem">
+
+${porcentagem}%
+
+</div>
+
+</div>
+
+          <small>${votos} apoios • ${naoApoios} não apoios</small>
 
           <div class="barra-voto">
             <span style="width:${porcentagem}%"></span>
@@ -381,27 +419,68 @@ ${projeto.imagem
   }).join("");
 };
 
-window.votarProjeto = async function (idProjeto) {
-  const votosFeitos = JSON.parse(localStorage.getItem("votosProjetos") || "[]");
-
-  if (votosFeitos.includes(idProjeto)) {
-    alert("Você já votou nesse projeto.");
-    return;
-  }
-
-  if (votosFeitos.length >= 3) {
-    alert("Você já votou em 3 projetos.");
-    return;
-  }
+window.votarProjeto = async function(idProjeto) {
+  const opinioes = JSON.parse(localStorage.getItem("opinioesProjetos") || "{}");
+  const opiniaoAtual = opinioes[idProjeto];
 
   const projetoRef = doc(db, "projetos", idProjeto);
 
-  await updateDoc(projetoRef, {
-    votos: increment(1)
-  });
+  if (opiniaoAtual === "apoio") {
+    await updateDoc(projetoRef, {
+      votos: increment(-1)
+    });
 
-  votosFeitos.push(idProjeto);
-  localStorage.setItem("votosProjetos", JSON.stringify(votosFeitos));
+    delete opinioes[idProjeto];
+  } else if (opiniaoAtual === "naoApoio") {
+    await updateDoc(projetoRef, {
+      votos: increment(1),
+      naoApoios: increment(-1)
+    });
 
+    opinioes[idProjeto] = "apoio";
+  } else {
+    await updateDoc(projetoRef, {
+      votos: increment(1)
+    });
+
+    opinioes[idProjeto] = "apoio";
+  }
+
+  localStorage.setItem("opinioesProjetos", JSON.stringify(opinioes));
   carregarProjetosVotacao();
 };
+
+
+window.naoApoiarProjeto = async function(idProjeto) {
+  const opinioes = JSON.parse(localStorage.getItem("opinioesProjetos") || "{}");
+  const opiniaoAtual = opinioes[idProjeto];
+
+  const projetoRef = doc(db, "projetos", idProjeto);
+
+  if (opiniaoAtual === "naoApoio") {
+    await updateDoc(projetoRef, {
+      naoApoios: increment(-1)
+    });
+
+    delete opinioes[idProjeto];
+  } else if (opiniaoAtual === "apoio") {
+    await updateDoc(projetoRef, {
+      votos: increment(-1),
+      naoApoios: increment(1)
+    });
+
+    opinioes[idProjeto] = "naoApoio";
+  } else {
+    await updateDoc(projetoRef, {
+      naoApoios: increment(1)
+    });
+
+    opinioes[idProjeto] = "naoApoio";
+  }
+
+  localStorage.setItem("opinioesProjetos", JSON.stringify(opinioes));
+  carregarProjetosVotacao();
+};
+
+
+

@@ -3239,3 +3239,37 @@ color:#29435C;
     height: 135px;
   }
 }
+
+.btn-nao-apoiar{
+
+width:42px;
+height:42px;
+
+border:none;
+
+border-radius:50%;
+
+background:
+rgba(255,255,255,.8);
+
+border:
+1px solid rgba(
+41,67,92,.12);
+
+font-size:18px;
+
+cursor:pointer;
+
+color:#29435C;
+
+transition:.3s;
+
+}
+
+.btn-nao-apoiar:hover{
+
+transform:scale(1.08);
+
+background:#f0e7e7;
+
+}
